@@ -1,4 +1,4 @@
-criteria = ['a','.txt']
+criteria = ['space','.txt']
 
 terminal = 'jpeg' # 'jpeg' 'png' 'eps'
 
@@ -13,4 +13,4 @@ plot = True # True False
 
 import sys
 sys.dont_write_bytecode = True
-from Pranay.pm3dplot.gnuplotpm3d import *
+from Pranay.gnuplotter.gnuplotpm3d import *
