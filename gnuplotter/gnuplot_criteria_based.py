@@ -44,8 +44,8 @@ def parameter_generator_individual(all_files):
             parameter += [ [outfile,title, fileData] ]
     return parameter
 
-def parameter_generator_together(all_files,criteria):
-    outfile = '_'.join(criteria[1:])
+def parameter_generator_together(all_files,criteria,outfile):
+    if(outfile=='auto'):outfile = '_'.join(criteria[1:])
     title = gentitle(outfile)
     fileData = []
     for i,(filename,filepath) in enumerate(all_files):
@@ -62,7 +62,7 @@ valid_file_blocks=[]
 for i,(plot_type, crit, non_crit) in enumerate(all_parameters):
     files = select(all_files,crit,non_crit)
     if(plot_type[0]=='together'):
-        valid_file_blocks += parameter_generator_together(files,crit)
+        valid_file_blocks += parameter_generator_together(files,crit,plot_type[1])
     elif(plot_type[0]=='individual'):
         valid_file_blocks += parameter_generator_individual(files)
     else:
