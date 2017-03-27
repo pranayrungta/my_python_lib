@@ -1,4 +1,4 @@
-filename = 'critical_fnode.txt'
+filename = 'sample_data/critical_fnode.txt'
 outfilename = 'fc_SW_static_n=100_c=1'
 fontSize = 13
 
@@ -60,4 +60,4 @@ text_labels = [
 ##----------------------------------------------------
 import sys
 sys.dont_write_bytecode = True
-from Pranay.plot_index.plotter import *
+from Pranay.matplotlib.plot_index import *
