@@ -39,5 +39,5 @@ if(len(valid_file_blocks)>0):
         os.system('gnuplot script.plt')
         os.remove('script.plt')
 else:
-    print '\nNo files found'
+    print('\nNo files found')
 #-----------------------------------------

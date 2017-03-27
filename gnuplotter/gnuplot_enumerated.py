@@ -38,7 +38,7 @@ def check_validity(fileData):
         if(os.path.isfile(filepath)):
             valid_files += [(filepath, title)]
         else :
-            print 'File not found : ',filepath
+            print('File not found : ',filepath)
     return valid_files
 
 
@@ -85,5 +85,5 @@ if(len(valid_file_blocks)>0):
         os.system('gnuplot script.plt')
         os.remove('script.plt')
 else:
-    print '\nNo files found'
+    print('\nNo files found')
 #-----------------------------------------

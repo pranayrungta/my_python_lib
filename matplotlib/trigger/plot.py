@@ -60,4 +60,4 @@ text_labels = [
 ##----------------------------------------------------
 import sys
 sys.dont_write_bytecode = True
-from Pranay.plot_index.plotter import *
+from Pranay.matplotlib.plot_index import *

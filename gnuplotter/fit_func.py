@@ -17,7 +17,7 @@ def fit_files(fileData,usingColms,fit):
     if(fit=='power'):
         fit_cmd=power_law_fit_cmd
     elif(fit=='linear'):
-        print 'program under construction!!!'
+        print('program under construction!!!')
         raw_input('Press enter to exit!!!')
         exit()
     s=''

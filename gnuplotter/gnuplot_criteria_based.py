@@ -19,7 +19,7 @@ def check_validity(fileData):
         if(os.path.isfile(filepath)):
             valid_files += [(filepath, title)]
         else :
-            print 'File not found : ',filepath
+            print('File not found : ',filepath)
     return valid_files
 
 def select(all_files,criteria,nonCriteria):
@@ -66,8 +66,8 @@ for i,(plot_type, crit, non_crit) in enumerate(all_parameters):
     elif(plot_type[0]=='individual'):
         valid_file_blocks += parameter_generator_individual(files)
     else:
-        print 'wrong plot_type :',plot_type
-        print 'check index :',i
+        print('wrong plot_type :',plot_type)
+        print('check index :',i)
 
 #------------main program-------------------
 from Pranay.gnuplotter.gnuplotter_basic import *
@@ -81,5 +81,5 @@ if(len(valid_file_blocks)>0):
         os.system('gnuplot script.plt')
         os.remove('script.plt')
 else:
-    print '\nNo files found'
+    print('\nNo files found')
 #-----------------------------------------

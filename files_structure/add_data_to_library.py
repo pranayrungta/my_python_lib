@@ -15,7 +15,6 @@ for i in files:
     folder_path = '/'.join(folder_path)
     new_path = '/'.join([folder_path, i])
 
-
     if(os.path.isdir(folder_path)):
         if(os.path.isfile(new_path)):
             already_exist += [i]
@@ -26,7 +25,7 @@ for i in files:
         os.rename(i, new_path)
         
 if(len(already_exist)>0):
-    print "Following files already exists :\n"
+    print("Following files already exists :\n")
     for filename in already_exist:
-        print filename
+        print(filename)
     raw_input()

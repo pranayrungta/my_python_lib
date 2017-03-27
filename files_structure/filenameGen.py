@@ -29,7 +29,7 @@ def check_validity(fileData):
         if(os.path.isfile(filepath)):
             valid_files += [(filepath, vary)]
         else :
-            print 'File not found : ',filepath
+            print('File not found : ',filepath)
     return valid_files
 
 
