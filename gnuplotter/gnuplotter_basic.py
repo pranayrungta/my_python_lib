@@ -1,4 +1,8 @@
-from __main__ import *
+from __main__ import (terminal,
+                      xlabel,xRangeflag,xRange,
+                      ylabel,yRangeflag,yRange,
+                      plot_With,using_colms,
+                      set_grid)
 import os
 
 def filenameClause(filepath,curve_title):
