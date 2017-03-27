@@ -1,5 +1,5 @@
 from __main__ import *
-from read_index import *
+from Pranay.matplotlib.read_index import *
 
 #============ Plotting===================
 pylab.xlabel(xlabel[0],fontsize=xlabel[1])

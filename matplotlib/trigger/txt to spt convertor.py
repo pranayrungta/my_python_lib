@@ -42,6 +42,6 @@ if __name__ == "__main__":
                     all(crit in filename for crit in criteria)
                     and os.path.isfile(filename) ) ]
     for filename in files:
-        print 'Converting :',filename
+        print('Converting :',filename)
         writeData(filename)
-    raw_input('\nDone ! Press enter to exit')
+    input('\nDone ! Press enter to exit')

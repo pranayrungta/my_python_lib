@@ -74,6 +74,6 @@ files = [ filename for filename in ls if(
                 all(crit in filename for crit in criteria)
                 and os.path.isfile(filename) ) ]
 for filename in files:
-    print 'Plotting :',filename
+    print('Plotting :',filename)
     pm3dplot(filename)
-print '\nDone !'
+print('\nDone !')

@@ -1,6 +1,6 @@
 criteria = ['.spt','']
 
-output = 'png' # 'show' 'png' 'pdf' 'eps'
+output = 'show' # 'show' 'png' 'pdf' 'eps'
 
 xlabel = 'auto' # 'auto'
 xRange = 'auto'# [1,50] # 'auto'
