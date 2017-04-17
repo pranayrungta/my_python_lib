@@ -1,5 +1,13 @@
 from __main__ import *
 
+#---------check using_colms for backward compatibility---
+try:
+  using_colms
+except NameError:
+  using_colms=(0,1)
+#--------------------------------------------------------
+
+
 #---------generate filenames------------
 if(fileStructure=='raw'):
     from Pranay.files_structure.filepath import raw_file_path as file_path
@@ -32,7 +40,7 @@ for outfile, title, files in fileData:
     f.write('# code %s : not found\n'%not_found)
     f.write('#\n' + header() )
 
-    data = x_at_yList(files,threshold,not_found)
+    data = x_at_yList(files,threshold,not_found,using_colms)
     for key,values in sorted(data.items()):
         f.write('%s\t%s\n'%(key, values) )
     f.close()

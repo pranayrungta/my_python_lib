@@ -27,5 +27,5 @@ for text_label in text_labels:
     pylab.text( *text_label, fontsize = fontSize)
 
 if(output_format=='show'): pylab.show()
-else: pylab.savefig('%s.%s'%(outfilename,output_format))    
+else: pylab.savefig('%s.%s'%(outfilename,output_format),bbox_inches='tight')    
 pylab.close()

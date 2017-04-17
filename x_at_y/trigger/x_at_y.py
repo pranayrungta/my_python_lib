@@ -15,6 +15,7 @@ fileStructure = 'lib' # 'lib' 'raw'
 
 
 threshold = 0.5
+using_colms = (0,1) # 0 is first colm
 
 x_at_y_label = 'critical coupling'
 not_found = -1  # 'N.A.'  'not_found'  -1
