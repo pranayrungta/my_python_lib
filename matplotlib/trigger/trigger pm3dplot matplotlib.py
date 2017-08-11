@@ -13,6 +13,7 @@ title = 'auto' # None  'auto'  'title'
 
 colorRange = 'auto' # 'auto'  [0,1]
 
+figsize = (8,6)
 vertical_on_x = True # False  True
 
 

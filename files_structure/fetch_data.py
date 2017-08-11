@@ -14,7 +14,6 @@ def find(pattern, path):
 for parameters in fetch_parameters:
     filename = '_'.join(parameters) + '.txt'
 
-    s= find(filename, '.')
-    for i in s:
-        os.rename(i[0],i[1])
+    for oldpath,newpath in find(filename, '.'):
+        os.rename(oldpath,newpath)
 

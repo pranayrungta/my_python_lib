@@ -6,10 +6,6 @@ files = [i for i in ls if( all(x in i for x in fileCriteria) )
                     and not any(x in i for x in nonCriteria)]
 
 already_exist = []
-
-##for filename in files:
-##    print filename
-
 for i in files:
     folder_path = i.split('_')[:-1]
     folder_path = '/'.join(folder_path)

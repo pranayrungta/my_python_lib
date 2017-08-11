@@ -1,7 +1,7 @@
 from __main__ import *
 
-
-import pylab
+import matplotlib.pyplot as plt
+import numpy as np
 
 def labels(tag):
     yl,xl = tag.split('\\')
@@ -13,57 +13,48 @@ def labels(tag):
 
 def set_title(filename):
     if(title=='auto'):
-        pylab.title(filename[:-4])
+        plt.title(filename[:-4])
     elif(title!=None):
-        pylab.title(title)
+        plt.title(title)
 
 def spacetime_data(filename):
-    with open(filename,'r') as f:
-        content = f.read()
-    content = content.strip()
-    content = content.split('\n')
-    content = [i.strip() for i in content]
-    content = [i.split('\t') for i in content]
+    content = open(filename,'r').read()
+    content = content.strip().split('\n')
+    content = [i.strip().split('\t') for i in content]
 
-    #label = content[0][0]
     ylabel,xlabel = labels(content[0][0])
     x=[ float(i) for i in content[0][1:] ]
-    x = pylab.array(x)
+    x = np.array(x)
     content = [[float(i) for i in line] for line in content[1:]]
-    content = pylab.array(content)
+    content = np.array(content)
     y = content[:,0]
     content = content[:,1:]
     return (x,xlabel),(y,ylabel),content
 
 def pm3dplot(filename):
+    plt.figure(figsize=figsize)
     (x,xlabel),(y,ylabel),z = spacetime_data(filename)
     if(vertical_on_x):
         (x,xlabel),(y,ylabel)= (y,ylabel),(x,xlabel)
         z = z.T
-    if(colorRange=='auto'):
-        pylab.imshow(z, aspect='auto', origin='lower',
-                 interpolation = 'none',
-                 extent=(x.min(),x.max(),y.min(),y.max())
-                 )
-    else:
-        pylab.imshow(z, aspect='auto', origin='lower',
-                 interpolation = 'none',
-                 extent=(x.min(),x.max(),y.min(),y.max()),
-                 vmin=colorRange[0], vmax=colorRange[1]
-                 )
+    if(colorRange=='auto'): vmin_max = {}
+    else: vmin_max = {'vmin':colorRange[0], 'vmax':colorRange[1]}
+    plt.imshow(z, aspect='auto', origin='lower', interpolation = 'none',
+                 extent=(x.min(),x.max(),y.min(),y.max()), **vmin_max )
 
-    if(xRange!='auto'):pylab.xlim(xRange[0],xRange[1])
-    if(yRange!='auto'):pylab.ylim(yRange[0],yRange[1])
-    
+    if(xRange!='auto'):plt.xlim(xRange[0],xRange[1])
+    if(yRange!='auto'):plt.ylim(yRange[0],yRange[1])
+
     set_title(filename)
-    pylab.xlabel(xlabel)
-    pylab.ylabel(ylabel)
-    pylab.colorbar()
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.colorbar()
+    plt.tight_layout()
     if(output=='show'):
-        pylab.show()
+        plt.show()
     else:
-        pylab.savefig('%s.%s'%(filename[:-4],output))
-    pylab.close()
+        plt.savefig('%s.%s'%(filename[:-4],output))
+    plt.close()
 
 
 
