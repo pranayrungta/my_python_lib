@@ -10,7 +10,7 @@ from Pranay.files_structure.filenameGen import *
 valid_file_blocks = parameter_generator(all_parameters,vary_parameter,
                         for_all_fixed,constant_parameter,base,file_path)
 
-if(action=='display_files'):
+if(output=='display_files'):
     print '---FILES TO BE PLOTTED----'
     print
     for out,tit,fileData in valid_file_blocks:
@@ -18,22 +18,21 @@ if(action=='display_files'):
         for filepath,curve in fileData:
             print curve,filepath
         print
-elif( action=='plot' and len(valid_file_blocks)>0 ):
+elif( len(valid_file_blocks)==0 ):
+    print 'No files to be plotted'
+else:
     #---------generate output folder-----------
-    if(out_folder=='None'):
-        folderName = './'
+    if(out_folder=='None'): folderName = './'
     elif(out_folder=='auto'):
         folderName = all_parameters[vary_parameter][0]
         folderName = 'varying ' + folderName.split('=')[0]
-    else:
-        folderName = out_folder
-    if(not os.path.isdir(folderName) ):
-        os.mkdir(folderName)
+    else: folderName = out_folder
+    if(not os.path.isdir(folderName) ): os.mkdir(folderName)
     #-----------------------------------------
 
     import numpy as np
     import matplotlib.pyplot as plt
-    x,y = using_colms
+    #x,y = using_colms
 
     for outfile,title,fileData in valid_file_blocks:
         plt.grid(set_grid)
@@ -42,17 +41,18 @@ elif( action=='plot' and len(valid_file_blocks)>0 ):
         if('y' in log):plt.yscale('log')
         plt.xlabel(xlabel,**label_para)
         plt.ylabel(ylabel,**label_para)
-        if(xRange!='auto'): plt.xlim(xRange)
-        if(yRange!='auto'): plt.ylim(yRange)
+        plt.xlim(**xlim)
+        plt.ylim(**ylim)
 
-        plt.title(title)
         for filepath,curve_title in fileData:
             data = np.loadtxt(filepath)
             if(data.ndim==1): #contains single line
                 data=data.reshape(1,len(data))
-            plt.plot( data[:,x], data[:,y], plot_style, label=curve_title )
+            plt.plot( *using(data), label=curve_title )
 
-        plt.legend( loc=legend_loc )
+        if(plot_title=='auto'): plt.title(title)
+        elif(plot_title!='None'):plt.title(plot_title)
+        if(legend_loc!='None'):plt.legend( loc=legend_loc )
         plt.tight_layout()
         if(output=='show'): plt.show()
         else:
