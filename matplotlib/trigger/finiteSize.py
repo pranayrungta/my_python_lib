@@ -33,10 +33,11 @@ def using_colms():
     nRange = [100.0,250.0,500.0]
     xcrit = 0.125
     power = 0.5
-    x,y = 1,2
+    x1,y1 = 0,1
     for n in nRange:
         colm = yield # getting data from file
-        yield (colm[:,0]/n-xcrit)*(n**power), colm[:,1], 'o' # 'ro-'
+        x,y = colm[:,x1],colm[:,y1]
+        yield (x/n-xcrit)*(n**power), y, 'o' # 'ro-'
 
 set_grid = False  # True   False
 plot_title = 'auto' # 'auto' 'None' 'TITLE'
