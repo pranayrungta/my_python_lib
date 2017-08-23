@@ -1,3 +1,5 @@
+# This program takes files from one library and makes new files
+# containing xval from all files(in vary_parameter) 
 all_parameters = [['Star'],#0
                   ['n=100',],#1
                   ['h','l'],#2
