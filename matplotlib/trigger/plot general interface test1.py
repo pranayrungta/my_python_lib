@@ -1,33 +1,29 @@
-all_parameters = [['dynamic', 'static'],#0
-                  ['c=1'],#1
-                  [ 'k=2','k=4' ] , #2
-                  [ 'n=100','n=250','n=500' ] , #3
-                  [ 'b=-0.1' ] , #4
-                  [ 'p=0.9' ] , #5
+all_parameters = [['freq'],#0
+                  ['btc'],#1
+                  [ 'Ring','RSF_k=1_ic=100','RSF_k=2_ic=100','Star' ] , #2
                   ]
 
-vary_parameter = 3  # index
-for_all_fixed = 2   # index
+vary_parameter = 2  # index
+for_all_fixed = 1   # index
 constant_parameter = { 0:0 ,
-                       1:0 ,
-                       4:0 ,
-                       5:0 ,
                        }
 
-base = './sample_data/'
-fileStructure = 'lib' # 'lib' 'raw'
+base = './../../gnuplotter/trigger/sample_data/'
+fileStructure = 'raw' # 'lib' 'raw'
 
 out_folder = 'None' # 'None' 'fol_name' 'auto'
 #---------plot parameters-------------
 log = 'None' #'None' 'x' 'y' 'xy'
 
-xlabel = ( r'$N_1$', {'fontsize':35} )
-ylabel = ( '<x>', {'fontsize':20} ) #{'fontsize':20}
+xlabel = ( r'fnode', {'fontsize':20} )
+ylabel = ( 'Mean BS', {'fontsize':20} ) #{'fontsize':20}
 
 xlim={} #{'xmin':-0.1, 'xmax':1}
-ylim={} #{'ymin':-0.1, 'ymax':1}
+ylim={'ymin':-0.1, 'ymax':100} #{'ymin':-0.1, 'ymax':1}
 
 def using(colm):
+    if(colm.ndim==1): #contains single line
+        colm=colm.reshape(1,len(colm))
     return colm[:,0], colm[:,1], 'o-' # 'ro-'
 
 set_grid = False  # True   False

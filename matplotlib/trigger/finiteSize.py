@@ -22,9 +22,8 @@ out_folder = 'None' # 'None' 'fol_name' 'auto'
 #---------plot parameters-------------
 log = 'None' #'None' 'x' 'y' 'xy'
 
-xlabel = 'N1/N scaled'
-ylabel = '<x>'
-label_para = {} # {'fontsize':20}
+xlabel = ( 'N1/N scaled', {'fontsize':35} )
+ylabel = ( '<x>', {'fontsize':20} ) #{'fontsize':20}
 
 xlim={'xmin':-3, 'xmax':3} #{'xmin':-0.1, 'xmax':1}
 ylim={} #{'ymin':-0.1, 'ymax':1}
