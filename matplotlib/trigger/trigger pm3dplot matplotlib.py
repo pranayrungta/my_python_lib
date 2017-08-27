@@ -2,18 +2,17 @@ criteria = ['.spt','']
 
 output = 'show' # 'show' 'png' 'pdf' 'eps'
 
+
+xlim={} #{'xmin':1, 'xmax':50}
+ylim={} #{'ymin':1, 'ymax':50}
+
 xlabel = 'auto' # 'auto'
-xRange = 'auto'# [1,50] # 'auto'
-
 ylabel = 'auto'  # 'auto'
-yRange =  'auto'# [1,50] # 'auto'
-
-title = 'auto' # None  'auto'  'title'
-# 'auto' set filename as title
+title = 'auto' # None  'auto'  'TITLE'
 
 colorRange = 'auto' # 'auto'  [0,1]
 
-figsize = (8,6)
+figsize = (10,6)
 vertical_on_x = True # False  True
 
 

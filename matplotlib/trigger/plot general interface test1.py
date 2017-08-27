@@ -18,20 +18,19 @@ log = 'None' #'None' 'x' 'y' 'xy'
 xlabel = ( r'fnode', {'fontsize':20} )
 ylabel = ( 'Mean BS', {'fontsize':20} ) #{'fontsize':20}
 
-xlim={} #{'xmin':-0.1, 'xmax':1}
+xlim={'xmin':0.1, 'xmax':1}#{'xmin':-0.1, 'xmax':1}
 ylim={'ymin':-0.1, 'ymax':100} #{'ymin':-0.1, 'ymax':1}
 
 def using(colm):
     if(colm.ndim==1): #contains single line
         colm=colm.reshape(1,len(colm))
-    return colm[:,0], colm[:,1], 'o-' # 'ro-'
+    return colm[:,0], colm[:,1], 'x-' # 'ro-'
 
-set_grid = False  # True   False
+set_grid = True  # True   False
 plot_title = 'auto' # 'auto' 'None' 'TITLE'
 legend_loc = 'best' # 'None' 'best', 'right'
 output = 'show'  # 'display_files' 'show' 'eps' 'png'
 #------------------------------------
-
 
 
 

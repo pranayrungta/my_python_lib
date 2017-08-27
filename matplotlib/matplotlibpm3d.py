@@ -42,12 +42,13 @@ def pm3dplot(filename):
     plt.imshow(z, aspect='auto', origin='lower', interpolation = 'none',
                  extent=(x.min(),x.max(),y.min(),y.max()), **vmin_max )
 
-    if(xRange!='auto'):plt.xlim(xRange[0],xRange[1])
-    if(yRange!='auto'):plt.ylim(yRange[0],yRange[1])
+    plt.xlim(**xlim)
+    plt.ylim(**ylim)
 
     set_title(filename)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
+
     plt.colorbar()
     plt.tight_layout()
     if(output=='show'):
