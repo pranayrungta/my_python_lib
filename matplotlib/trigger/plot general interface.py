@@ -18,6 +18,7 @@ base = './sample_data/'
 fileStructure = 'lib' # 'lib' 'raw'
 
 out_folder = 'None' # 'None' 'fol_name' 'auto'
+
 #---------plot parameters-------------
 log = 'None' #'None' 'x' 'y' 'xy'
 
@@ -33,7 +34,7 @@ def using(colm):
 set_grid = False  # True   False
 plot_title = 'auto' # 'auto' 'None' 'TITLE'
 legend_loc = 'best' # 'None' 'best', 'right'
-output = 'show'  # 'display_files' 'show' 'eps' 'png'
+output = 'display_files'  # 'display_files' 'show' 'eps' 'png'
 #------------------------------------
 
 

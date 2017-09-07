@@ -7,26 +7,17 @@ elif(fileStructure=='lib'):
     from Pranay.files_structure.filepath import lib_file_path as file_path
 from Pranay.files_structure.filenameGen import *
 #-----------------------------------------
-valid_file_blocks = parameter_generator(all_parameters,vary_parameter,
-                        for_all_fixed,constant_parameter,base,file_path)
+valid_file_blocks = parameter_generator( all_parameters, vary_parameter,
+           for_all_fixed, constant_parameter, base, file_path, out_folder )
 
 if(output=='display_files'):
-    print '---FILES TO BE PLOTTED----'
+    print 'valid_file_blocks=\\'
     import pprint
     pp = pprint.PrettyPrinter(indent=4,width=200)
     pp.pprint(valid_file_blocks)
 elif( len(valid_file_blocks)==0 ):
     print 'No files to be plotted'
 else:
-    #---------generate output folder-----------
-    if(out_folder=='None'): folderName = './'
-    elif(out_folder=='auto'):
-        folderName = all_parameters[vary_parameter][0]
-        folderName = 'varying ' + folderName.split('=')[0]
-    else: folderName = out_folder
-    if(not os.path.isdir(folderName) ): os.mkdir(folderName)
-    #-----------------------------------------
-
     import numpy as np
     import matplotlib.pyplot as plt
     #import matplotlib as mpl; mpl.style.use('classic')
@@ -48,6 +39,5 @@ else:
         if(legend_loc!='None'):plt.legend( loc=legend_loc )
         plt.tight_layout()
         if(output=='show'): plt.show()
-        else:
-            plt.savefig( '%s/%s.%s'%(folderName,outfile,output) )    
+        else: plt.savefig( '%s.%s'%(outfile,output) )    
         plt.close()

@@ -9,10 +9,21 @@ def dicToParaValues(paraDic, para):
         dic[key] = para[key][value]
     return dic
 
-def title_outfile(paraDic,para):
+def outfolder(out_folder, all_parameters, vary_parameter):
+    if(out_folder=='None'): folderName = './'
+    elif(out_folder=='auto'):
+        folderName = all_parameters[vary_parameter][0]
+        folderName = 'varying ' + folderName.split('=')[0]
+    else: folderName = out_folder
+    if(not os.path.isdir(folderName) ):
+        os.mkdir(folderName)
+    return folderName
+
+def title_outfile(paraDic, para, out_folder):
     values = sortedList( dicToParaValues(paraDic,para) )
     title =  ' '.join(values)
     outfile =  '_'.join(values)
+    if(out_folder!='./'): outfile=out_folder+'/'+outfile
     return title,outfile
 
 # here vary is index of (varying parameter -> curve)
@@ -39,10 +50,12 @@ def check_validity(fileData):
 #                        (filepath2, vary2), ]
 #                    ]
 def parameter_generator(all_parameters,vary_parameter,for_all_fixed,
-                        constant_parameter, base, file_path):
+                        constant_parameter, base, file_path,
+                        out_folder='./'): # for backward compatibility
 
     no_of_files = len(all_parameters[for_all_fixed])
     plots_per_file = len(all_parameters[vary_parameter])
+    out_folder = outfolder(out_folder,all_parameters,vary_parameter)
 
     parameter=[]
     # fileNo = output file no.
@@ -50,7 +63,7 @@ def parameter_generator(all_parameters,vary_parameter,for_all_fixed,
         paraDic = constant_parameter.copy()
 
         paraDic[for_all_fixed]= fileNo
-        title,outfile = title_outfile(paraDic,all_parameters)
+        title,outfile = title_outfile(paraDic,all_parameters,out_folder)
 
         fileData = []
         for curveNo in range(plots_per_file):

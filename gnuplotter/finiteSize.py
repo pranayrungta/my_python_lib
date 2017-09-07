@@ -14,11 +14,7 @@ def generate_parameters():
 
 import os
 
-def filenameClause(filepath,curve_title,colm):    
-##    colm= '%s'%using_colms[0]
-##    for i in using_colms[1:]:
-##        colm+= ':%s'%i
-
+def filenameClause(filepath,curve_title,colm):
     s =  '"%s" u %s '%(filepath,colm)
     s += 'w %s title "%s" '%(plot_With,curve_title)
     return s

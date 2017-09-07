@@ -24,11 +24,11 @@ def header_data(block):
     return header,block
 
 #============ Plotting===================
-plt.xlabel(xlabel[0],fontsize=xlabel[1])
-plt.ylabel(ylabel[0],fontsize=ylabel[1])
+plt.xlabel(*xlabel)
+plt.ylabel(*ylabel)
 
-if(xRangeflag == True): plt.xlim(xRange)
-if(yRangeflag == True): plt.ylim(yRange)
+plt.xlim(*xlim)
+plt.ylim(*ylim)
 
 if(logx):plt.xscale('log')
 if(logy):plt.yscale('log')

@@ -1,17 +1,17 @@
-all_parameters = [['DSF'],#0
-                  ['order=3','order=4','order=5'],#1
-                  [ 'c=0.1','c=0.5','c=1','c=2','c=3','c=4', ] , #2
+all_parameters = [['freq'],#0
+                  ['btc'],#1
+                  [ 'Ring','RSF_k=1_ic=100','RSF_k=2_ic=100','Star' ] , #2
                   ]
-
 
 vary_parameter = 2  # index
 for_all_fixed = 1   # index
 constant_parameter = { 0:0 ,
                        }
 
-base = './'
+base = './../../gnuplotter/trigger/sample_data/'
 fileStructure = 'raw' # 'lib' 'raw'
     
+out_folder = 'auto' # 'None' 'fol_name' 'auto'
 #-----gnuplot parameters-------------
 terminal = 'jpeg'  # 'eps' 'jpeg' 'png'
 
