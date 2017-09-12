@@ -11,7 +11,7 @@ constant_parameter = { 0:0 ,
 base = './../../gnuplotter/trigger/sample_data/'
 fileStructure = 'raw' # 'lib' 'raw'
     
-out_folder = 'auto' # 'None' 'fol_name' 'auto'
+out_folder = 'None' # 'None' 'fol_name' 'auto'
 #-----gnuplot parameters-------------
 terminal = 'jpeg'  # 'eps' 'jpeg' 'png'
 

@@ -37,7 +37,7 @@ yRange = (-0.05,1.05)
 plot_With = 'lp'   # 'lp'  'p' 'l'  'errorbars'
 using_colms = (1,3)
 
-plot = True  # False   False
+plot = False  # False   False
 set_grid = True  # True   False
 #------------------------------------
 

@@ -15,7 +15,7 @@ constant_parameter = { 0:0 ,
                        5:0 ,
                        }
 
-base = './../../Data/'
+base = './../../matplotlib/trigger/sample_data'
 fileStructure = 'lib' # 'lib' 'raw'
     
 #-----gnuplot parameters-------------
@@ -42,7 +42,7 @@ def colmGen():
         yield colms
     
 
-plot = True  # True   False
+plot = False  # True   False
 set_grid = True  # True   False
 #------------------------------------
 

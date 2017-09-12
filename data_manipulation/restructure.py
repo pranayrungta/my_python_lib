@@ -1,12 +1,4 @@
-from __main__ import *
-
-from Pranay.files_structure.filenameGen import *
-#---------generate filenames------------
-if(fileStructure=='raw'):
-    from Pranay.files_structure.filepath import raw_file_path as file_path
-elif(fileStructure=='lib'):
-    from Pranay.files_structure.filepath import lib_file_path as file_path
-#---------------------------------------
+from __main__ import *from Pranay.files_structure.filenameGen import *
 
 def file_value(paraDic,vary):
     value = eval(vary.split('=')[-1])
@@ -20,6 +12,7 @@ def file_value(paraDic,vary):
 ##              (filepath,val2), ]
 ##        ]
 def generateParameters():
+    file_path = file_path_method(fileStructure)
     iterations = len(all_parameters[for_all_fixed])
     parameter = []
     for iter_no in range(iterations):

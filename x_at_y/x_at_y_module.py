@@ -1,22 +1,15 @@
 from __main__ import *
 
 #---------check using_colms for backward compatibility---
-try:
-  using_colms
+try: using_colms
 except NameError:
   using_colms=(0,1)
 #--------------------------------------------------------
-
-
 #---------generate filenames------------
-if(fileStructure=='raw'):
-    from Pranay.files_structure.filepath import raw_file_path as file_path
-elif(fileStructure=='lib'):
-    from Pranay.files_structure.filepath import lib_file_path as file_path
 from Pranay.files_structure.filenameGen import *
 def generate_parameters():
     return parameter_generator(all_parameters,vary_parameter,
-            for_all_fixed,constant_parameter,base,file_path)
+            for_all_fixed,constant_parameter,base,fileStructure)
 #-----------------------------------------
 
 

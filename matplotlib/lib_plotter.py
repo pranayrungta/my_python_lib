@@ -1,22 +1,13 @@
 from __main__ import *
+import Pranay.files_structure.filenameGen as fileGen
 
-#---------generate filenames------------
-if(fileStructure=='raw'):
-    from Pranay.files_structure.filepath import raw_file_path as file_path
-elif(fileStructure=='lib'):
-    from Pranay.files_structure.filepath import lib_file_path as file_path
-from Pranay.files_structure.filenameGen import *
-#-----------------------------------------
-valid_file_blocks = parameter_generator( all_parameters, vary_parameter,
-           for_all_fixed, constant_parameter, base, file_path, out_folder )
+valid_file_blocks=fileGen.parameter_generator( all_parameters, vary_parameter,
+           for_all_fixed, constant_parameter, base, fileStructure, out_folder )
 
-if(output=='display_files'):
-    print 'valid_file_blocks=\\'
-    import pprint
-    pp = pprint.PrettyPrinter(indent=4,width=200)
-    pp.pprint(valid_file_blocks)
-elif( len(valid_file_blocks)==0 ):
+if( len(valid_file_blocks)==0 ):
     print 'No files to be plotted'
+elif(output=='display_files'):
+    fileGen.display(valid_file_blocks)
 else:
     import numpy as np
     import matplotlib.pyplot as plt

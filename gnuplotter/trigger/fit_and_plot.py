@@ -12,7 +12,7 @@ constant_parameter = { 0:0 ,
                        4:0 ,
                        5:0 ,
                        }
-base = './'
+base = './../../matplotlib/trigger/sample_data'
 fileStructure = 'raw' # 'lib' 'raw'
 
 fit = 'power' # 'power' 'linear'

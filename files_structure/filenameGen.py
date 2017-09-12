@@ -43,6 +43,14 @@ def check_validity(fileData):
             print 'File not found : ',filepath
     return valid_files
 
+def file_path_method(fileStructure):
+    import Pranay.files_structure.filepath as fp
+    if(fileStructure=='raw'):
+        return fp.raw_file_path
+    elif(fileStructure=='lib'):
+        return fp.lib_file_path
+    else:
+        raise ValueError('unknown fileStructure')
 
 #-----generating filenames------------
 # format :  list of  [     outfile, title,
@@ -50,12 +58,12 @@ def check_validity(fileData):
 #                        (filepath2, vary2), ]
 #                    ]
 def parameter_generator(all_parameters,vary_parameter,for_all_fixed,
-                        constant_parameter, base, file_path,
+                        constant_parameter, base, fileStructure,
                         out_folder='./'): # for backward compatibility
-
+    file_path = file_path_method(fileStructure)
+    out_folder = outfolder(out_folder,all_parameters,vary_parameter)
     no_of_files = len(all_parameters[for_all_fixed])
     plots_per_file = len(all_parameters[vary_parameter])
-    out_folder = outfolder(out_folder,all_parameters,vary_parameter)
 
     parameter=[]
     # fileNo = output file no.
@@ -76,3 +84,12 @@ def parameter_generator(all_parameters,vary_parameter,for_all_fixed,
             parameter += [ [outfile,title, fileData] ]
     return parameter
 #-----------------------------------------------------------
+
+
+def display(valid_file_blocks):
+    print 'valid_file_blocks=\\'
+    import pprint
+    pp = pprint.PrettyPrinter(indent=4,width=200)
+    pp.pprint(valid_file_blocks)
+
+
