@@ -15,6 +15,8 @@ constant_parameter = { 0:0 ,
 base = './../../matplotlib/trigger/sample_data'
 fileStructure = 'raw' # 'lib' 'raw'
 
+out_folder='None' # 'auto' 'None' 'FOLDER'
+
 fit = 'power' # 'power' 'linear'
 
 #-----gnuplot parameters-------------

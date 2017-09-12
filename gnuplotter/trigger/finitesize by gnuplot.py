@@ -17,7 +17,8 @@ constant_parameter = { 0:0 ,
 
 base = './../../matplotlib/trigger/sample_data'
 fileStructure = 'lib' # 'lib' 'raw'
-    
+
+out_folder = 'None' # 'None' 'fol_name' 'auto'
 #-----gnuplot parameters-------------
 terminal = 'jpeg'  # 'eps' 'jpeg' 'png'
 

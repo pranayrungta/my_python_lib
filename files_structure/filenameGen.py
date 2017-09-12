@@ -43,14 +43,26 @@ def check_validity(fileData):
             print 'File not found : ',filepath
     return valid_files
 
+
+#------------------FILE PATH-----------------------
+def raw_file_path(filename,root):
+    filepath = '/'.join([root,filename])
+    return filepath
+
+def lib_file_path(filename,root):
+    filepath = filename.split('_')[:-1]
+    filepath = '/'.join(filepath)
+    filepath = '/'.join([root,filepath, filename])
+    return filepath
+
 def file_path_method(fileStructure):
-    import Pranay.files_structure.filepath as fp
     if(fileStructure=='raw'):
-        return fp.raw_file_path
+        return raw_file_path
     elif(fileStructure=='lib'):
-        return fp.lib_file_path
+        return lib_file_path
     else:
         raise ValueError('unknown fileStructure')
+#---------------------------------------------------
 
 #-----generating filenames------------
 # format :  list of  [     outfile, title,
