@@ -1,4 +1,5 @@
-from __main__ import *from Pranay.files_structure.filenameGen import *
+from __main__ import *
+from Pranay.files_structure.filenameGen import *
 
 def file_value(paraDic,vary):
     value = eval(vary.split('=')[-1])

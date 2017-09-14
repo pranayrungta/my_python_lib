@@ -39,10 +39,8 @@ def check_validity(fileData):
     for filepath,vary in fileData:
         if(os.path.isfile(filepath)):
             valid_files += [(filepath, vary)]
-        else :
-            print 'File not found : ',filepath
+        else: print 'File not found : ',filepath
     return valid_files
-
 
 #------------------FILE PATH-----------------------
 def raw_file_path(filename,root):
@@ -60,8 +58,7 @@ def file_path_method(fileStructure):
         return raw_file_path
     elif(fileStructure=='lib'):
         return lib_file_path
-    else:
-        raise ValueError('unknown fileStructure')
+    else: raise ValueError('unknown fileStructure')
 #---------------------------------------------------
 
 #-----generating filenames------------
@@ -95,13 +92,9 @@ def parameter_generator(all_parameters,vary_parameter,for_all_fixed,
         if(len(fileData)>0):
             parameter += [ [outfile,title, fileData] ]
     return parameter
-#-----------------------------------------------------------
-
 
 def display(valid_file_blocks):
     print 'valid_file_blocks=\\'
     import pprint
     pp = pprint.PrettyPrinter(indent=4,width=200)
     pp.pprint(valid_file_blocks)
-
-

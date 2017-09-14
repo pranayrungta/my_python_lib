@@ -4,12 +4,12 @@ from __main__ import *
 try: out_folder 
 except NameError: out_folder='auto'
 #--------------------------------------------
-from Pranay.files_structure.filenameGen import *
+import Pranay.files_structure.filenameGen as fileGen
 from Pranay.gnuplotter.gnuplotter_basic import *
 
 #------------main program-------------------
-valid_file_blocks = parameter_generator(all_parameters,vary_parameter,
-      for_all_fixed,constant_parameter,base,fileStructure,out_folder)
+valid_file_blocks = fileGen.parameter_generator(all_parameters,vary_parameter,
+              for_all_fixed,constant_parameter,base,fileStructure,out_folder)
 
 if(len(valid_file_blocks)==0):
     print '\nNo files to be plotted'
