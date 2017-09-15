@@ -25,6 +25,7 @@ else:
     script.write( 'unset output ; exit gnuplot \n' )
     script.close()
     if(plot):
+        import os
         os.system('gnuplot script.plt')
         os.remove('script.plt')
 #-----------------------------------------

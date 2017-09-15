@@ -54,6 +54,7 @@ else:
     script.close()
 
     if(plot):
+        import os
         os.system('gnuplot script.plt')
         os.remove('script.plt')
 #-----------------------------------------

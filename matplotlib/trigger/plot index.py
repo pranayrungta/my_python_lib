@@ -8,14 +8,11 @@ ylabel = ( r'$f_c$', {'fontsize':22} ) #{'fontsize':20}
 xlim={} #{'xmin':5, 'xmax':9.5}
 ylim={} #{'ymin':0.1, 'ymax':0.42}
 
-logx = False
-logy = False
+log = 'None' #'None' 'x' 'y' 'xy'
 
-
-marker = 'o'  #'+'  '.'  'o'  '*'  'p'  's'  'x'  'D'  'h'  '^' 
-markerSize = 8
-linestyle =  ':' # '-'  '--'  ':'  '-.' 'None'
-
+plot_with = dict(marker='o',  #'+'  '.'  'o'  '*'  'p'  's'  'x'  'D'  'h'  '^' 
+            markerSize=8, linestyle =  ':' # '-'  '--'  ':'  '-.' 'None'
+)
 output_format = 'show' # 'show' 'png' 'pdf' 'eps'
 
 # [ index, (x,y), 'label' ]
@@ -25,6 +22,7 @@ plot_details = [ [0,(3,2),'RSF m=1'],
                  [3,(3,2),'SW'],
                  ]
 legend = True
+iteractive = True # True:only runs in ipython cmd False
 
 text_labels = [     #SW
                     [8.91, 0.157, 'p=0.2'] ,

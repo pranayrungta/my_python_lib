@@ -43,7 +43,7 @@ def colmGen():
         yield colms
     
 
-plot = False  # True   False
+plot = True  # True   False
 set_grid = True  # True   False
 #------------------------------------
 

@@ -1,5 +1,8 @@
 from __main__ import *
 
+if(iteractive):
+    import matplotlib
+    matplotlib.interactive(True)
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -23,31 +26,40 @@ def header_data(block):
                         for row in block ] )
     return header,block
 
+def printNewpos(annotate):
+    new = []
+    for i in annotate:
+        new+= [ (i.get_text(), i.get_position()) ]
+    import pprint
+    pp= pprint.PrettyPrinter(indent=4)
+    pp.pprint(new)
+
 #============ Plotting===================
-plt.xlabel(*xlabel)
-plt.ylabel(*ylabel)
+plt.xlabel(*xlabel);plt.ylabel(*ylabel)
+plt.xlim(*xlim);plt.ylim(*ylim)
 
-plt.xlim(*xlim)
-plt.ylim(*ylim)
-
-if(logx):plt.xscale('log')
-if(logy):plt.yscale('log')
+if('x' in log):plt.xscale('log')
+if('y' in log):plt.yscale('log')
 
 blocks = get_blocks(filename)
 
 for index,(x,y),label in plot_details:
     header,data  = header_data(blocks[index])
-    plt.plot( data[:,x], data[:,y], label=label,marker=marker,
-                linestyle=linestyle,  markersize=markerSize)
+    plt.plot( data[:,x], data[:,y], label=label,**plot_with)
 ##    print label
 ##    for i,t in enumerate(data[:,x]):
 ##        print '[ %s, %s,'%(t, data[:,y][i])
 ##    print
 
 if(legend):plt.legend()
-for text_label in text_labels:
-    plt.text( *text_label, fontsize = fontSize)
+annotate = []
+for x,y, label in text_labels:
+    annotate+= [plt.annotate(label, (x,y))]
 plt.tight_layout()
-if(output_format=='show'): plt.show()
+if(output_format=='show'):
+    if(iteractive):
+        for i in annotate:
+            i.draggable()
+    plt.show()
 else: plt.savefig('%s.%s'%(outfilename,output_format))
 plt.close()
