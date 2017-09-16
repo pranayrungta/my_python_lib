@@ -5,7 +5,7 @@
 filecriteria = ['.py']
 nonCriteria = ['Replace']
 
-look_for = "Pranay.files_structure.filenameGen"
+look_for = "gnuplotter_basic"
 replace_with = "Pranay.files_structure.filenameGen"
 
 #1. Show filenames

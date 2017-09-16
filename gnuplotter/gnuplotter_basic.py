@@ -1,34 +1,45 @@
-from __main__ import *
+def initialize(terminal, set_grid, plot_With, using_colms=[]):
+    global script, ext, colm, plot_with
 
+    if(terminal=='jpeg') : ext = 'jpg'
+    elif(terminal=='png'): ext = 'png'
+    elif(terminal=='eps'):
+        ext = 'eps'
+        terminal = 'postscript enhanced color font "Helvetica,24"'
+    script = open('script.plt', 'w')
+    script.write( 'set terminal %s \n\n'%terminal )
+    if(set_grid): script.write( 'set grid \n\n' )
 
-#-----terminal--------
-if(terminal=='jpeg') : ext = 'jpg'
-if(terminal== 'png') : ext = 'png'
-if(terminal== 'eps')  :
-    ext = 'eps'
-    terminal = 'postscript enhanced color font "Helvetica,24"'
+    colm=':'.join(str(i) for i in using_colms)
+    plot_with = plot_With
 
-def scriptHead(scriptfile):
-    scriptfile.write( 'set terminal %s \n\n'%terminal )
-    if(set_grid): scriptfile.write( 'set grid \n\n' )
+def setAxis(xlabel,ylabel,xRange,yRange,xRangeflag,yRangeflag):
+    script.write( 'set xlabel "%s" \n'%xlabel )
+    script.write( 'set ylabel "%s" \n'%ylabel )
+    if(xRangeflag == True): script.write( 'set xrange [%s:%s] \n\n'%xRange )
+    if(yRangeflag == True): script.write( 'set yrange [%s:%s] \n\n'%yRange )
+    script.write( '\n' )
 
-    scriptfile.write( 'set xlabel "%s" \n'%xlabel )
-    scriptfile.write( 'set ylabel "%s" \n'%ylabel )
-    if(xRangeflag == True): scriptfile.write( 'set xrange [%s:%s] \n\n'%xRange )
-    if(yRangeflag == True): scriptfile.write( 'set yrange [%s:%s] \n\n'%yRange )
-    scriptfile.write( '\n' )
+def output(outfile, title):
+    script.write( 'set output "%s.%s" \n'%(outfile,ext) )
+    script.write( 'set title "%s" \n'%title )    
 
 def filenameClause(filepath, curve_title):
-    colm= '%s'%using_colms[0]
-    for i in using_colms[1:]:
-        colm+= ':%s'%i
-    s =  '"%s" u %s '%(filepath,colm)
-    s += 'w %s title "%s" '%(plot_With,curve_title)
-    return s
+    return  '"%s" u %s w %s title "%s"'%(
+        filepath, colm, plot_with, curve_title)
 
-def plotStatement(fileData,plotClause):
+def plot(fileData, plotClause=filenameClause):
     clauses = [plotClause(filepath,curve_title)
           for filepath,curve_title in fileData ]
     clauses[0] = 'plot '+ clauses[0]
     clauseSep = ', \t \\\n     '
-    return clauseSep.join(clauses)
+    script.write(clauseSep.join(clauses)+'\n\n')
+
+def draw(plot):
+    script.write( '\n' )
+    script.write( 'unset output ; exit gnuplot \n' )
+    script.close()
+    if(plot):
+        import os
+        os.system('gnuplot script.plt')
+        os.remove('script.plt')

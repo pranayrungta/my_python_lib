@@ -21,6 +21,7 @@ fileStructure = 'lib' # 'lib' 'raw'
 out_folder = 'None' # 'None' 'fol_name' 'auto'
 #-----gnuplot parameters-------------
 terminal = 'jpeg'  # 'eps' 'jpeg' 'png'
+set_grid = True  # True   False
 
 xlabel = 'N1/N scaled'
 xRangeflag = False  # True   False
@@ -35,16 +36,13 @@ plot_With = 'p'   # 'lp'  'p' 'l'  'errorbars'
 def colmGen():
     nRange=[100,250,500]
     x,y=1,2
-    xcrit=0.125
-    power=0.5
+    xcrit=0.125; power=0.5
     for n in nRange:
         colms = '( ($%s/%s-%s)*(%s**%s) ):%s'%(
                     x,n,xcrit,n,power,y)
         yield colms
-    
 
 plot = True  # True   False
-set_grid = True  # True   False
 #------------------------------------
 
 

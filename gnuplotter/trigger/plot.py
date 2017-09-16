@@ -14,20 +14,20 @@ fileStructure = 'raw' # 'lib' 'raw'
 out_folder = 'None' # 'None' 'fol_name' 'auto'
 #-----gnuplot parameters-------------
 terminal = 'jpeg'  # 'eps' 'jpeg' 'png'
+set_grid = True  # True   False
 
 xlabel = 'fnode'
 xRangeflag = False  # True   False
 xRange = (0,5)
 
 ylabel = 'Mean BS'
-yRangeflag = True # True   False
+yRangeflag = False # True   False
 yRange = (-0.05,1.05)
 
 plot_With = 'l'   # 'lp'  'p' 'l'  'errorbars'
 using_colms = (1,2)
 
-plot = True  # True   False
-set_grid = True  # True   False
+plot = False  # True   False
 #------------------------------------
 
 
