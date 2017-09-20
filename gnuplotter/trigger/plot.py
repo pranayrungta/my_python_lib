@@ -13,7 +13,7 @@ fileStructure = 'raw' # 'lib' 'raw'
     
 out_folder = 'None' # 'None' 'fol_name' 'auto'
 #-----gnuplot parameters-------------
-terminal = 'jpeg'  # 'eps' 'jpeg' 'png'
+terminal = 'jpeg'  # 'show' 'eps' 'jpeg' 'png'
 set_grid = True  # True   False
 
 xlabel = 'fnode'
@@ -27,7 +27,7 @@ yRange = (-0.05,1.05)
 plot_With = 'l'   # 'lp'  'p' 'l'  'errorbars'
 using_colms = (1,2)
 
-plot = False  # True   False
+plot = True  # True   False
 #------------------------------------
 
 

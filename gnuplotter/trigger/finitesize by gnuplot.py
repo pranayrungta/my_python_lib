@@ -20,7 +20,7 @@ fileStructure = 'lib' # 'lib' 'raw'
 
 out_folder = 'None' # 'None' 'fol_name' 'auto'
 #-----gnuplot parameters-------------
-terminal = 'jpeg'  # 'eps' 'jpeg' 'png'
+terminal = 'png'  #'show' 'eps' 'jpeg' 'png'
 set_grid = True  # True   False
 
 xlabel = 'N1/N scaled'
@@ -42,7 +42,7 @@ def colmGen():
                     x,n,xcrit,n,power,y)
         yield colms
 
-plot = True  # True   False
+plot = False  # True   False
 #------------------------------------
 
 

@@ -96,5 +96,5 @@ def parameter_generator(all_parameters,vary_parameter,for_all_fixed,
 def display(valid_file_blocks):
     print 'valid_file_blocks=\\'
     import pprint
-    pp = pprint.PrettyPrinter(indent=4,width=200)
+    pp = pprint.PrettyPrinter(indent=4,width=120)
     pp.pprint(valid_file_blocks)

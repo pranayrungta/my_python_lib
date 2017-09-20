@@ -6,8 +6,9 @@ def initialize(terminal, set_grid, plot_With, using_colms=[]):
     elif(terminal=='eps'):
         ext = 'eps'
         terminal = 'postscript enhanced color font "Helvetica,24"'
+    elif(terminal=='show'):ext='show'
     script = open('script.plt', 'w')
-    script.write( 'set terminal %s \n\n'%terminal )
+    if(ext!='show'):script.write( 'set terminal %s \n\n'%terminal )
     if(set_grid): script.write( 'set grid \n\n' )
 
     colm=':'.join(str(i) for i in using_colms)
@@ -21,7 +22,8 @@ def setAxis(xlabel,ylabel,xRange,yRange,xRangeflag,yRangeflag):
     script.write( '\n' )
 
 def output(outfile, title):
-    script.write( 'set output "%s.%s" \n'%(outfile,ext) )
+    if(ext!='show'):
+        script.write( 'set output "%s.%s" \n'%(outfile,ext) )
     script.write( 'set title "%s" \n'%title )    
 
 def filenameClause(filepath, curve_title):
@@ -41,5 +43,6 @@ def draw(plot):
     script.close()
     if(plot):
         import os
-        os.system('gnuplot script.plt')
+        if(ext=='show'):os.system('gnuplot -p script.plt')
+        else: os.system('gnuplot script.plt')
         os.remove('script.plt')

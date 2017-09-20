@@ -22,11 +22,11 @@ out_folder = 'None' # 'None' 'fol_name' 'auto'
 #---------plot parameters-------------
 log = 'None' #'None' 'x' 'y' 'xy'
 
-xlabel = ( r'$N_1$', {'fontsize':35} )
-ylabel = ( '<x>', {'fontsize':20} ) #{'fontsize':20}
+xlabel = ( r'$N_1$', dict(fontsize=25) )
+ylabel = ( '<x>',  dict(fontsize=25) ) #{'fontsize':20}
 
-xlim={} #{'xmin':-0.1, 'xmax':1}
-ylim={} #{'ymin':-0.1, 'ymax':1}
+xlim= dict()#dict(xmin=-0.1, xmax=1)
+ylim= dict()#dict(ymin=-0.1, ymax=1)
 
 def using(colm):
     return colm[:,0], colm[:,1], 'o-' # 'ro-'
@@ -34,7 +34,7 @@ def using(colm):
 set_grid = False  # True   False
 plot_title = 'auto' # 'auto' 'None' 'TITLE'
 legend_loc = 'best' # 'None' 'best', 'right'
-output = 'display_files'  # 'display_files' 'show' 'eps' 'png'
+output = 'show'  # 'display_files' 'show' 'eps' 'png'
 #------------------------------------
 
 
