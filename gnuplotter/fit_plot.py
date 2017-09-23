@@ -1,43 +1,40 @@
 from __main__ import *
-
+#-----maintaining backward compatibility----
+try: out_folder 
+except NameError: out_folder='auto'
 #---------generate filenames------------
-if(fileStructure=='raw'):
-    from Pranay.files_structure.filepath import raw_file_path as file_path
-elif(fileStructure=='lib'):
-    from Pranay.files_structure.filepath import lib_file_path as file_path
-from Pranay.files_structure.filenameGen import *
-def generate_parameters():
-    return parameter_generator(all_parameters,vary_parameter,
-            for_all_fixed,constant_parameter,base,file_path)
-#-----------------------------------------
+import Pranay.files_structure.filenameGen as fileGen
+import Pranay.gnuplotter.gnuplotter_basic as plt
 
-from Pranay.gnuplotter.gnuplotter_basic import *
-from Pranay.gnuplotter.fit_func import *
+def power_law_fit_cmd(filepath, vary):
+    tag = vary.split('=')[-1]
+    line1 = "f%s(x) = a%s*x**b%s  \n"%((tag,)*3)
+    line2 = "fit f%s(x) '%s' u %s via a%s, b%s \n"%(tag,filepath,plt.colm,tag,tag)
+    line3 = "title_f%s(a%s,b%s) = "%((tag,)*3)
+    line3 += "sprintf(  'f(x) = %.2f (x^{%.2f}) " #label
+    line3 += " for %s  ', a%s, b%s   ) \n"%(vary, tag, tag)
+    return line1+line2+line3
 
-def plotClause(filepath,vary):
-    return ( filenameClause(filepath,vary) + ', '+
-             plot_fitCurve_clause(vary))
-
-def plotBlock(fileData):
-    s= fit_files(fileData,using_colms,fit) + '\n'
-    s+= plotStatement(fileData,plotClause)
-    return s
-
+def fit_files(fileData,fit):
+    if(fit=='power'): fit_cmd=power_law_fit_cmd
+    else: raise ValueError('program under construction!!!')
+    plt.script.write( '\n'+ '\n'.join(fit_cmd(filepath,vary)
+                             for filepath,vary in fileData) + '\n')
+def filenameClause(filepath,vary):
+    tag = vary.split('=')[-1]
+    s = ', f%s(x) title title_f%s(a%s,b%s) '%((tag,)*4)
+    return plt.filenameClause(filepath,vary)+s
 
 #------------main program-------------------
-valid_file_blocks = generate_parameters()
-if(len(valid_file_blocks)>0):
-    folderName = all_parameters[vary_parameter][0]
-    folderName = folderName.split('=')[0]
-    folderName = 'varying '+folderName
-
-    if(not os.path.isdir(folderName) ):
-        os.mkdir(folderName)
-    generate_script(valid_file_blocks,folderName,plotBlock)
-
-    if(plot):
-        os.system('gnuplot script.plt')
-        os.remove('script.plt')
+valid_file_blocks = fileGen.parameter_generator(all_parameters,vary_parameter,
+                for_all_fixed,constant_parameter,base,fileStructure,out_folder)
+if(len(valid_file_blocks)==0):
+    print('\nNo files to be plotted')
 else:
-    print('\nNo files found')
-#-----------------------------------------
+    plt.initialize(terminal,set_grid, plot_With, using_colms)
+    plt.setAxis(xlabel,ylabel,xRange,yRange,xRangeflag,yRangeflag)
+    for outfile, title, fileData in valid_file_blocks:
+        plt.output(outfile,title)
+        fit_files(fileData,fit)
+        plt.plot(fileData,filenameClause)
+    plt.draw(plot)

@@ -1,36 +1,23 @@
 from __main__ import *
 
-#---------generate filenames------------
-if(fileStructure=='raw'):
-    from Pranay.files_structure.filepath import raw_file_path as file_path
-elif(fileStructure=='lib'):
-    from Pranay.files_structure.filepath import lib_file_path as file_path
-from Pranay.files_structure.filenameGen import *
-def generate_parameters():
-    return parameter_generator(all_parameters,vary_parameter,
-            for_all_fixed,constant_parameter,base,file_path)
-#-----------------------------------------
+#-----maintaining backward compatibility----
+try: out_folder 
+except NameError: out_folder='auto'
+#--------------------------------------------
+
+import Pranay.files_structure.filenameGen as fileGen
+valid_file_blocks = fileGen.parameter_generator(all_parameters,vary_parameter,
+              for_all_fixed,constant_parameter,base,fileStructure,out_folder)
 
 
-from Pranay.gnuplotter.gnuplotter_basic import *
-def plotBlock(fileData):
-    return plotStatement(fileData,filenameClause)
-
-
-#------------main program-------------------
-valid_file_blocks = generate_parameters()
-if(len(valid_file_blocks)>0):
-    folderName = all_parameters[vary_parameter][0]
-    folderName = folderName.split('=')[0]
-    folderName = 'varying '+folderName
-
-    if(not os.path.isdir(folderName) ):
-        os.mkdir(folderName)
-    generate_script(valid_file_blocks,folderName,plotBlock)
-
-    if(plot):
-        os.system('gnuplot script.plt')
-        os.remove('script.plt')
+if(len(valid_file_blocks)==0):
+    print('\nNo files to be plotted')
 else:
-    print('\nNo files found')
+    import Pranay.gnuplotter.gnuplotter_basic as plt
+    plt.initialize(terminal,set_grid, plot_With, using_colms)
+    plt.setAxis(xlabel,ylabel,xRange,yRange,xRangeflag,yRangeflag)
+    for outfile, title, fileData in valid_file_blocks:
+        plt.output(outfile,title)
+        plt.plot(fileData)
+    plt.draw(plot)
 #-----------------------------------------

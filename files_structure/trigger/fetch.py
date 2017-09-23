@@ -3,7 +3,9 @@
 # eg2. 'ScaleFree_order=4_b=0.1.txt'
 
 fetch_parameters = [
-    ('*'),
+    ('Smallworld','dynamic', 'n=100','k=2', 'b=$', 'p=0.1') ,
+    ('Smallworld','static', 'n=100','k=2', 'b=$', 'p=$') ,
+    ('ring','n=100','k=1','b=$'),
     ('ScaleFree','order=4','b=$')       ]
 
 

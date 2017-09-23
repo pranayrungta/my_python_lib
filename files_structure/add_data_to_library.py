@@ -6,14 +6,11 @@ files = [i for i in ls if( all(x in i for x in fileCriteria) )
                     and not any(x in i for x in nonCriteria)]
 
 already_exist = []
-
-##for filename in files:
-##    print filename
-
 for i in files:
     folder_path = i.split('_')[:-1]
     folder_path = '/'.join(folder_path)
     new_path = '/'.join([folder_path, i])
+
 
     if(os.path.isdir(folder_path)):
         if(os.path.isfile(new_path)):
@@ -28,4 +25,4 @@ if(len(already_exist)>0):
     print("Following files already exists :\n")
     for filename in already_exist:
         print(filename)
-    raw_input()
+    input()

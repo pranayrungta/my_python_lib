@@ -1,28 +1,16 @@
-all_parameters =[
-    [
-        {'outfile':'auto', 'title':'auto'},
-        [
-            ('freq_btc_Ring.txt', 'auto'),
-            ('freq_btc_RSF_k=1_ic=100.txt', 'auto'),
-            ('freq_btc_RSF_k=2_ic=100.txt', 'auto'),
-            ('freq_btc_Star.txt', 'auto'),
-        ]
-    ],
-    [
-        {'outfile':'RSF_Star', 'title':'auto'},
-        [
-            ('freq_btc_RSF_k=1_ic=100.txt', 'auto'),
-            ('freq_btc_RSF_k=2_ic=100.txt', 'k=2'),
-            ('freq_btc_Star.txt', 'Star'),
-        ]
-    ],
-]
+valid_file_blocks=\
+[   [   'plot_0',
+        'plot 0',
+        [   ('./sample_data//freq_btc_Ring.txt', 'freq btc Ring'),
+            ('./sample_data//freq_btc_RSF_k=1_ic=100.txt', 'freq btc RSF k=1 ic=100'),
+            ('./sample_data//freq_btc_RSF_k=2_ic=100.txt', 'freq btc RSF k=2 ic=100'),
+            ('./sample_data//freq_btc_Star.txt', 'freq btc Star')]],
+    [   'RSF_Star',
+        'RSF Star',
+        [   ('./sample_data//freq_btc_RSF_k=1_ic=100.txt', 'freq btc RSF k=1 ic=100'),
+            ('./sample_data//freq_btc_RSF_k=2_ic=100.txt', 'k=2'),
+            ('./sample_data//freq_btc_Star.txt', 'Star')]]]
 
-
-
-base = './sample_data/'
-fileStructure = 'raw' # 'lib' 'raw'
-    
 #-----gnuplot parameters-------------
 terminal = 'jpeg'  # 'eps' 'jpeg' 'png'
 
@@ -37,7 +25,7 @@ yRange = (-0.05,1.05)
 plot_With = 'lp'   # 'lp'  'p' 'l'  'errorbars'
 using_colms = (1,3)
 
-plot = True  # False   False
+plot = False  # True   False
 set_grid = True  # True   False
 #------------------------------------
 

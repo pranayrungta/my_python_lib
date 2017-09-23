@@ -20,15 +20,15 @@ def writeData(filename):
     data = dataDic(filename)
     f = open('%s.spt'%filename[:-4], 'w')
     f.write(tag)
-    elem=data.itervalues().next()
+    elem=next(iter(data.values()))
 
     for header in sorted(elem):
         f.write('\t%s'%header)
     f.write('\n')
 
-    for t,xval in sorted(data.iteritems()):
+    for t,xval in sorted(data.items()):
         f.write(str(t))
-        for x,value in sorted(xval.iteritems()):
+        for x,value in sorted(xval.items()):
             f.write('\t%s'%value)
         f.write('\n')
     f.write('\n')

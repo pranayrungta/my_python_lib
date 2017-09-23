@@ -1,31 +1,65 @@
 from __main__ import *
-from Pranay.matplotlib.read_index import *
+
+if(iteractive):
+    import matplotlib
+    matplotlib.interactive(True)
+import numpy as np
+import matplotlib.pyplot as plt
+
+def get_blocks(filename):
+    blocks = open(filename , 'r').read().strip()
+    blocks =[line.strip() for line in blocks.split('\n')]
+    blocks = '\n'.join(blocks)
+    blocks = blocks.split('\n\n\n')
+    return blocks
+
+def header_data(block):
+    block = block.split('\n')
+    for i,line in enumerate(block):
+        if(line[0]!='#') :
+            header = block[i-1][1:]
+            block = block[i:]
+            break
+    header = [s.strip() for s in header.split('\t')]
+    block = np.array([np.array([float(num)
+                        for num in row.strip().split('\t')])
+                        for row in block ] )
+    return header,block
+
+def printNewpos(annotate):
+    new = []
+    for i in annotate:
+        new+= [ (i.get_text(), i.get_position()) ]
+    import pprint
+    pp= pprint.PrettyPrinter(indent=4)
+    pp.pprint(new)
 
 #============ Plotting===================
-pylab.xlabel(xlabel[0],fontsize=xlabel[1])
-pylab.ylabel(ylabel[0],fontsize=ylabel[1])
+plt.xlabel(*xlabel);plt.ylabel(*ylabel)
+plt.xlim(*xlim);plt.ylim(*ylim)
 
-if(xRangeflag == True): pylab.xlim(xRange)
-if(yRangeflag == True): pylab.ylim(yRange)
-
-if(logx):pylab.xscale('log')
-if(logy):pylab.yscale('log')
+if('x' in log):plt.xscale('log')
+if('y' in log):plt.yscale('log')
 
 blocks = get_blocks(filename)
 
 for index,(x,y),label in plot_details:
     header,data  = header_data(blocks[index])
-    pylab.plot( data[:,x], data[:,y], label=label,marker=marker,
-                linestyle=linestyle,  markersize=markerSize)
+    plt.plot( data[:,x], data[:,y], label=label,**plot_with)
 ##    print label
 ##    for i,t in enumerate(data[:,x]):
 ##        print '[ %s, %s,'%(t, data[:,y][i])
 ##    print
-                           
-if(legend):pylab.legend() 
-for text_label in text_labels:
-    pylab.text( *text_label, fontsize = fontSize)
 
-if(output_format=='show'): pylab.show()
-else: pylab.savefig('%s.%s'%(outfilename,output_format))    
-pylab.close()
+if(legend):plt.legend()
+annotate = []
+for x,y, label in text_labels:
+    annotate+= [plt.annotate(label, (x,y))]
+plt.tight_layout()
+if(output_format=='show'):
+    if(iteractive):
+        for i in annotate:
+            i.draggable()
+    plt.show()
+else: plt.savefig('%s.%s'%(outfilename,output_format))
+plt.close()
