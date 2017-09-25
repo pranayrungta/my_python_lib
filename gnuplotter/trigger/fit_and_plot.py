@@ -12,14 +12,14 @@ constant_parameter = { 0:0 ,
                        4:0 ,
                        5:0 ,
                        }
+
 base = './../../matplotlib/trigger/sample_data'
 fileStructure = 'raw' # 'lib' 'raw'
 
 out_folder='None' # 'auto' 'None' 'FOLDER'
-
+#-----gnuplot parameters-------------
 fit = 'power' # 'power' 'linear'
 
-#-----gnuplot parameters-------------
 terminal = 'jpeg'  # 'eps' 'jpeg' 'png'
 
 xlabel = 'p'

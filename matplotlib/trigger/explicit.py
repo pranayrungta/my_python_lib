@@ -32,29 +32,8 @@ output = 'show'  # 'display_files' 'show' 'eps' 'png'
 
 
 
+
+
 import sys
 sys.dont_write_bytecode = True
-import numpy as np
-import matplotlib.pyplot as plt
-#import matplotlib as mpl; mpl.style.use('classic')
-
-for outfile,title,fileData in valid_file_blocks:
-    plt.grid(set_grid)
-
-    if('x' in log):plt.xscale('log')
-    if('y' in log):plt.yscale('log')
-    plt.xlabel(*xlabel); plt.ylabel(*ylabel)
-    plt.xlim(**xlim); plt.ylim(**ylim)
-
-    for filepath,curve_title in fileData:
-        data = np.loadtxt(filepath)
-        plt.plot( *using(data), label=curve_title )
-
-    if(plot_title=='auto'): plt.title(title)
-    elif(plot_title!='None'):plt.title(plot_title)
-    if(legend_loc!='None'):plt.legend( loc=legend_loc )
-    plt.tight_layout()
-    if(output=='show'): plt.show()
-    else:
-        plt.savefig( '%s.%s'%(outfile,output) )    
-    plt.close()
+from Pranay.matplotlib.lib_plotter import *

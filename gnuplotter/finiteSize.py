@@ -6,8 +6,10 @@ except NameError: out_folder='auto'
 #--------------------------------------------
 
 import Pranay.files_structure.filenameGen as fileGen
-valid_file_blocks = fileGen.parameter_generator(all_parameters,vary_parameter,
-                for_all_fixed,constant_parameter,base,fileStructure, out_folder)
+try: valid_file_blocks
+except NameError: valid_file_blocks=fileGen.parameter_generator(
+    all_parameters,vary_parameter,for_all_fixed,
+    constant_parameter, base, fileStructure, out_folder )
 
 
 import Pranay.gnuplotter.gnuplotter_basic as plt
@@ -25,8 +27,10 @@ def plotfiles(fileData):
 
 #------------main program-------------------
 
-if(len(valid_file_blocks)==0):
-    print('\nNo files to be plotted')
+if( len(valid_file_blocks)==0 ):
+    print('No files to be plotted')
+elif(terminal=='display_files'):
+    fileGen.display(valid_file_blocks)
 else:
     plt.initialize(terminal,set_grid, plot_With)
     plt.setAxis(xlabel,ylabel,xRange,yRange,xRangeflag,yRangeflag)

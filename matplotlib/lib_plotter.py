@@ -1,8 +1,10 @@
 from __main__ import *
 import Pranay.files_structure.filenameGen as fileGen
 
-valid_file_blocks=fileGen.parameter_generator( all_parameters, vary_parameter,
-           for_all_fixed, constant_parameter, base, fileStructure, out_folder )
+try: valid_file_blocks
+except NameError: valid_file_blocks=fileGen.parameter_generator(
+    all_parameters,vary_parameter,for_all_fixed,
+    constant_parameter, base, fileStructure, out_folder )
 
 if( len(valid_file_blocks)==0 ):
     print('No files to be plotted')
@@ -11,7 +13,7 @@ elif(output=='display_files'):
 else:
     import numpy as np
     import matplotlib.pyplot as plt
-    #import matplotlib as mpl; mpl.style.use('classic')
+    import matplotlib as mpl; mpl.style.use('classic')
 
     for outfile,title,fileData in valid_file_blocks:
         plt.grid(set_grid)

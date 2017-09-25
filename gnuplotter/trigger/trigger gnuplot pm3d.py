@@ -1,4 +1,4 @@
-criteria = ['space','.txt']
+criteria = ['','.txt']
 
 terminal = 'jpeg' # 'jpeg' 'png' 'eps'
 
@@ -7,7 +7,7 @@ ylabel = 'x'
 
 using_colms = (1,2,3)
 
-plot = True # True False
+plot = False # True False
 
 
 
