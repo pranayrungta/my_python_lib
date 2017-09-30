@@ -2,11 +2,11 @@
 # inside all folders in current working directory
 # satisfying th file criteria
 
-filecriteria = ['.py']
-nonCriteria = ['Replace']
+filecriteria = ['','.py']
+nonCriteria = ['.pyc','filenameGen.py','Replace']
 
-look_for = "gnuplotter_basic"
-replace_with = "Pranay.files_structure.filenameGen"
+look_for = "gnuplotter.gnuplotter"
+replace_with = "out_folder"
 
 #1. Show filenames
 #2. Show file + contents
@@ -45,17 +45,20 @@ def afterReplacement(contents):
 
 
 #----------main program-----------
+fileCollection = []
 for root, directory, files in os.walk('./'):
     for filename in files:
         filepath = os.path.join(root,filename)
         isCriteriaSatisfied, contents = criteria_satisfied(filepath)
         if(isCriteriaSatisfied):
-            if(action==1):print(filepath)
+            if(action==1):
+                print(filepath)
+                fileCollection += [filepath]
             elif(action==2):
                 print('===========================')
                 print(filepath)
                 print('===========================')
-                print(''.join(contents))
+                print( ''.join(contents) )
                 print('---------xxxxxxx-----------\n\n')
             elif(action==3):
                 print('===========================')

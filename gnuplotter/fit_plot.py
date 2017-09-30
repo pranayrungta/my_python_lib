@@ -1,11 +1,12 @@
 from __main__ import *
-#-----maintaining backward compatibility----
-try: out_folder 
-except NameError: out_folder='auto'
-#---------generate filenames------------
-import Pranay.files_structure.filenameGen as fileGen
-import Pranay.gnuplotter.gnuplotter_basic as plt
 
+import Pranay.files_structure.filenameGen as fileGen
+try: valid_file_blocks
+except NameError: valid_file_blocks=fileGen.parameter_generator(
+    all_parameters,vary_parameter,for_all_fixed,
+    constant_parameter, base, fileStructure, out_folder )
+
+import Pranay.gnuplotter.gnuplotter_basic as plt
 def power_law_fit_cmd(filepath, vary):
     tag = vary.split('=')[-1]
     line1 = "f%s(x) = a%s*x**b%s  \n"%((tag,)*3)
@@ -25,11 +26,10 @@ def filenameClause(filepath,vary):
     s = ', f%s(x) title title_f%s(a%s,b%s) '%((tag,)*4)
     return plt.filenameClause(filepath,vary)+s
 
-#------------main program-------------------
-valid_file_blocks = fileGen.parameter_generator(all_parameters,vary_parameter,
-                for_all_fixed,constant_parameter,base,fileStructure,out_folder)
-if(len(valid_file_blocks)==0):
-    print('\nNo files to be plotted')
+if( len(valid_file_blocks)==0 ):
+    print('No files to be plotted')
+elif(terminal=='display_files'):
+    fileGen.display(valid_file_blocks)
 else:
     plt.initialize(terminal,set_grid, plot_With, using_colms)
     plt.setAxis(xlabel,ylabel,xRange,yRange,xRangeflag,yRangeflag)

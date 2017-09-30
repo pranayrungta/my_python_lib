@@ -11,6 +11,7 @@ valid_file_blocks=\
             ('./sample_data//freq_btc_RSF_k=2_ic=100.txt', 'k=2'),
             ('./sample_data//freq_btc_Star.txt', 'Star')]]]
 
+
 #-----gnuplot parameters-------------
 terminal = 'jpeg'  # 'eps' 'jpeg' 'png'
 
@@ -32,4 +33,4 @@ set_grid = True  # True   False
 
 import sys
 sys.dont_write_bytecode = True
-from Pranay.gnuplotter.gnuplot_enumerated import *
+from Pranay.gnuplotter.gnuplotter import *

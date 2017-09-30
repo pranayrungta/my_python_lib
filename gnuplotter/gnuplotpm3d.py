@@ -9,7 +9,7 @@ if( len(files)==0 ):
     print('No files to be plotted')
 else:
     import Pranay.gnuplotter.gnuplotter_basic as plt
-    plt.initialize(terminal,False,'', using_colms)
+    plt.initialize(terminal, False, None, using_colms)
     plt.script.write("set pm3d map \n")
     plt.setAxis(xlabel,ylabel, None,None,False,False)
     for filename in files:

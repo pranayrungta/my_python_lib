@@ -1,12 +1,13 @@
 def initialize(terminal, set_grid, plot_With, using_colms=[]):
     global script, ext, colm, plot_with
 
-    if(terminal=='jpeg') : ext = 'jpg'
-    elif(terminal=='png'): ext = 'png'
+    if(terminal=='jpeg')  : ext = 'jpg'
+    elif(terminal=='png') : ext = 'png'
+    elif(terminal=='show'): ext = 'show'
     elif(terminal=='eps'):
         ext = 'eps'
         terminal = 'postscript enhanced color font "Helvetica,24"'
-    elif(terminal=='show'):ext='show'
+
     script = open('script.plt', 'w')
     if(ext!='show'):script.write( 'set terminal %s \n\n'%terminal )
     if(set_grid): script.write( 'set grid \n\n' )
@@ -33,7 +34,7 @@ def filenameClause(filepath, curve_title):
 def plot(fileData, plotClause=filenameClause):
     clauses = [plotClause(filepath,curve_title)
           for filepath,curve_title in fileData ]
-    clauses[0] = 'plot '+ clauses[0]
+    clauses[0] = 'plot ' + clauses[0]
     clauseSep = ', \t \\\n     '
     script.write(clauseSep.join(clauses)+'\n\n')
 
