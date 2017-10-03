@@ -1,25 +1,29 @@
 all_parameters = [['ring'],#0
                   ['n=8','n=12','n=16','n=20','n=24',],#1
-                  [ 'k=2' ] , #2
-                  [ 'b=0' ] , #3
+                  ['k=2' ] , #2
+                  ['b=0' ] , #3
                   ]
 vary_parameter = 1  # index
 for_all_fixed = 2   # index
 constant_parameter = {0:0,
                       3:0,
                       }
+
 base = './../../Data/'
-
 fileStructure = 'lib' # 'lib' 'raw'
-   
 
+out_folder = 'None' # 'None' 'fol_name' 'auto'
+#-----------------------------------------------
+threshold = 0.9
 
-threshold = 0.5
-using_colms = (0,1) # 0 is first colm
+def using(colm):
+    return colm[:,0], colm[:,1]
 
-x_at_y_label = 'critical coupling'
+xlabel = 'auto' # 'auto'
+ylabel = 'critical coupling'
+
 not_found = -1  # 'N.A.'  'not_found'  -1
-#----------------------------------------------------------------
+#-----------------------------------------------
 
 
 
@@ -30,4 +34,4 @@ not_found = -1  # 'N.A.'  'not_found'  -1
 
 import sys
 sys.dont_write_bytecode = True
-from Pranay.x_at_y.x_at_y_module import *
+from Pranay.x_at_y.x_at_y_moduleNew import *

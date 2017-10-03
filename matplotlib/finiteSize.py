@@ -13,7 +13,7 @@ elif(output=='display_files'):
 else:
     import numpy as np
     import matplotlib.pyplot as plt
-    #import matplotlib as mpl; mpl.style.use('classic')
+    import matplotlib as mpl; mpl.style.use('classic')
 
     for outfile,title,fileData in valid_file_blocks:
         plt.grid(set_grid)
