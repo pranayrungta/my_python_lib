@@ -22,7 +22,7 @@ def using(colm):
 xlabel = 'auto' # 'auto'
 ylabel = 'critical coupling'
 
-not_found = -1  # 'N.A.'  'not_found'  -1
+not_found = -1  # 'N.A.'  'not found'  -1
 #-----------------------------------------------
 
 
@@ -34,4 +34,4 @@ not_found = -1  # 'N.A.'  'not_found'  -1
 
 import sys
 sys.dont_write_bytecode = True
-from Pranay.x_at_y.x_at_y_moduleNew import *
+from Pranay.x_at_y.x_at_y_module import *

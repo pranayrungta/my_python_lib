@@ -1,6 +1,6 @@
 from __main__ import *
-import Pranay.files_structure.filenameGen as fileGen
 
+import Pranay.files_structure.filenameGen as fileGen
 try: valid_file_blocks
 except NameError: valid_file_blocks=fileGen.parameter_generator(
     all_parameters,vary_parameter,for_all_fixed,
@@ -39,7 +39,7 @@ for outfile, title, fileData in valid_file_blocks:
     title += ' threshold=%s'%threshold
     f=open(outfile, 'w')
     f.write('# %s \n'%title )
-    f.write('# code %s : not found\n'%not_found)
+    f.write('# not found : %s \n'%not_found)
     f.write('#\n' + header() )
 
     data = x_at_yList(fileData)

@@ -1,10 +1,11 @@
 from __main__ import *
 
-if(iteractive):
+if(interactive):
     import matplotlib
     matplotlib.interactive(True)
-import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib as mpl; mpl.style.use('classic')
+import numpy as np
 
 def get_blocks(filename):
     blocks = open(filename , 'r').read().strip()
@@ -26,12 +27,13 @@ def header_data(block):
                         for row in block ] )
     return header,block
 
-def printNewpos(annotate):
+def print_new_positions():
     new = []
     for i in annotate:
-        new+= [ (i.get_text(), i.get_position()) ]
+        new+= [ [i.get_position(), i.get_text()] ]
     import pprint
     pp= pprint.PrettyPrinter(indent=4)
+    print('text_labels = \\')
     pp.pprint(new)
 
 #============ Plotting===================
@@ -42,24 +44,22 @@ if('x' in log):plt.xscale('log')
 if('y' in log):plt.yscale('log')
 
 blocks = get_blocks(filename)
-
 for index,(x,y),label in plot_details:
     header,data  = header_data(blocks[index])
     plt.plot( data[:,x], data[:,y], label=label,**plot_with)
-##    print label
-##    for i,t in enumerate(data[:,x]):
-##        print '[ %s, %s,'%(t, data[:,y][i])
-##    print
-
 if(legend):plt.legend()
+
 annotate = []
 for x,y, label in text_labels:
     annotate+= [plt.annotate(label, (x,y))]
+    if(interactive):annotate[-1].draggable()
+
 plt.tight_layout()
-if(output_format=='show'):
-    if(iteractive):
-        for i in annotate:
-            i.draggable()
-    plt.show()
+if(output_format=='show'): plt.show()
 else: plt.savefig('%s.%s'%(outfilename,output_format))
-plt.close()
+
+if(not interactive):plt.close()
+else:
+    print('After changing positions of text_labels, call:')
+    print('print_new_positions()')
+    print_new_positions()

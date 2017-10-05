@@ -2,17 +2,19 @@ filename = 'sample_data/critical_fnode.txt'
 outfilename = 'fc_SW_static_n=100_c=1'
 fontSize = 13
 
-xlabel = ( 'Characteristic Path Length', {'fontsize':18} )
-ylabel = ( r'$f_c$', {'fontsize':22} ) #{'fontsize':20}
+xlabel = ( 'Characteristic Path Length', dict(fontsize=18) )
+ylabel = ( r'$f_c$', dict(fontsize=22) ) # dict(fontsize=18) 
 
-xlim={} #{'xmin':5, 'xmax':9.5}
-ylim={} #{'ymin':0.1, 'ymax':0.42}
+xlim=dict() # dict(xmin=5, xmax=9.5)
+ylim=dict() # dict(ymin=5, ymax=9.5)
 
 log = 'None' #'None' 'x' 'y' 'xy'
 
 plot_with = dict(marker='o',  #'+'  '.'  'o'  '*'  'p'  's'  'x'  'D'  'h'  '^' 
-            markerSize=8, linestyle =  ':' # '-'  '--'  ':'  '-.' 'None'
-)
+                 markerSize=8,
+                 linestyle =  ':' # '-'  '--'  ':'  '-.' 'None'
+                )
+
 output_format = 'show' # 'show' 'png' 'pdf' 'eps'
 
 # [ index, (x,y), 'label' ]
@@ -22,7 +24,7 @@ plot_details = [ [0,(3,2),'RSF m=1'],
                  [3,(3,2),'SW'],
                  ]
 legend = True
-iteractive = True # True:only runs in ipython cmd False
+interactive = True # True False
 
 text_labels = [     #SW
                     [8.91, 0.157, 'p=0.2'] ,
