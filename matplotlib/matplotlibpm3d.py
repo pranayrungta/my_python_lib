@@ -27,10 +27,8 @@ for filename in files:
     df, title = dataframe_title(filename,vertical_on_x, title)
     plt.figure(figsize=figsize)
     if(title!='None'):plt.title(title)
-    plt.xlim(**xlim)
-    plt.ylim(**ylim)
-    plt.xlabel(*xlabel)
-    plt.ylabel(*ylabel)
+    plt.xlabel(*xlabel); plt.ylabel(*ylabel)
+    plt.xlim(**xlim); plt.ylim(**ylim)
 
     plt.imshow(df.values, aspect='auto', origin='lower', interpolation = 'none',
        extent=(df.columns.min(),df.columns.max(), df.index.min(),df.index.max()),

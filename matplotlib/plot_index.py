@@ -38,7 +38,7 @@ def print_new_positions():
 
 #============ Plotting===================
 plt.xlabel(*xlabel);plt.ylabel(*ylabel)
-plt.xlim(*xlim);plt.ylim(*ylim)
+plt.xlim(**xlim);plt.ylim(**ylim)
 
 if('x' in log):plt.xscale('log')
 if('y' in log):plt.yscale('log')
@@ -62,4 +62,4 @@ if(not interactive):plt.close()
 else:
     print('After changing positions of text_labels, call:')
     print('print_new_positions()')
-    print_new_positions()
+    #print_new_positions()

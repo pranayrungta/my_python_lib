@@ -1,11 +1,10 @@
 filename = 'sample_data/critical_fnode.txt'
 outfilename = 'fc_SW_static_n=100_c=1'
-fontSize = 13
 
 xlabel = ( 'Characteristic Path Length', dict(fontsize=18) )
 ylabel = ( r'$f_c$', dict(fontsize=22) ) # dict(fontsize=18) 
 
-xlim=dict() # dict(xmin=5, xmax=9.5)
+xlim=dict() # dict(xmin=0, xmax=4.5)
 ylim=dict() # dict(ymin=5, ymax=9.5)
 
 log = 'None' #'None' 'x' 'y' 'xy'

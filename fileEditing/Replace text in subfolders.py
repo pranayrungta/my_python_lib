@@ -2,11 +2,12 @@
 # inside all folders in current working directory
 # satisfying th file criteria
 
-filecriteria = ['','.py']
-nonCriteria = ['.pyc','filenameGen.py','Replace']
+filecriteria = ['.py']
+nonCriteria = ['Replace', '.pyc']
 
-look_for = "gnuplotter.gnuplotter"
-replace_with = "out_folder"
+look_for = 'Pranay.data_manipulation.x_at_y_module'
+replace_with = ""
+print_format = 'idle-python3.5 "$"'
 
 #1. Show filenames
 #2. Show file + contents
@@ -15,21 +16,26 @@ replace_with = "out_folder"
 action = 1
 
 
-
+isAdir=[]
 
 #=====================================================================
 import os
 
 # return [flag, contents]
 def criteria_satisfied(filepath):
+    global isAdir
     flags = [ (criteria in filepath) for criteria in filecriteria ]
     flags +=[ (criteria not in filepath) for criteria in nonCriteria]
     if(not all(flags) ):
         return [False,'']
     else:
-        f= open(filepath, 'r')
-        contents = f.readlines()
-        f.close()
+        try:
+            f= open(filepath, 'r')
+            contents = f.readlines()
+            f.close()
+        except :
+            isAdir+=[filepath]
+            return [False,'']
 
         for line in contents:
             if(look_for in line):
@@ -52,7 +58,7 @@ for root, directory, files in os.walk('./'):
         isCriteriaSatisfied, contents = criteria_satisfied(filepath)
         if(isCriteriaSatisfied):
             if(action==1):
-                print(filepath)
+                print( print_format.replace('$',filepath) )
                 fileCollection += [filepath]
             elif(action==2):
                 print('===========================')
