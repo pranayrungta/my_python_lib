@@ -85,7 +85,7 @@ def parameter_generator(all_parameters,vary_parameter,for_all_fixed,
         fileData = []
         for curveNo in range(plots_per_file):
             paraDic[vary_parameter] = curveNo
-            filename,curve = filename_curve(all_parameters, paraDic, vary_parameter)
+            filename,curve=filename_curve(all_parameters, paraDic, vary_parameter)
             filepath = file_path(filename,base)
             fileData += [ (filepath, curve) ]
         fileData = check_validity(fileData)

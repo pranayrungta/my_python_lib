@@ -1,11 +1,9 @@
-files =\
-[
-    ]
-
+files = []
 
 line_before = 'fileStructure'
 line_after = '#-----gnuplot'
 insertLine = "out_folder = 'auto' # 'FOLDER' 'None' \n"
+
 
 def FirstLineIndex(lines):
    for i in range(len(lines)):

@@ -1,5 +1,6 @@
 import os
 s= 'RandomScaleFree'
+
 for root,dire, files in os.walk('./'):
     if(len(files)>0):
         for filename in files:

@@ -1,19 +1,20 @@
 from __main__ import *
 
-import os
-files = [filename for filename in os.listdir('./')
-         if( all(x in filename for x in criteria) )]
+import Pranay.files_structure.criteria as fileGen
+try: valid_file_blocks
+except NameError: valid_file_blocks = fileGen.parameter_generator(
+    criteria, nonCriteria, base, fileStructure, out_folder)
 
-
-if( len(files)==0 ):
+if( len(valid_file_blocks)==0 ):
     print('No files to be plotted')
+elif(terminal=='display_files'):
+    fileGen.display(valid_file_blocks)
 else:
     import Pranay.gnuplotter.gnuplotter_basic as plt
     plt.initialize(terminal, False, None, using_colms)
     plt.script.write("set pm3d map \n")
     plt.setAxis(xlabel,ylabel, None,None,False,False)
-    for filename in files:
-        title = ' '.join( filename[0:-4].split("_") )
-        plt.output(filename[0:-4],title)
-        plt.script.write("splot '%s' using %s\n\n\n"%(filename, plt.colm) )
+    for outfile,title,infile in valid_file_blocks:        
+        plt.output(outfile,title)
+        plt.script.write("splot '%s' using %s\n\n\n"%(infile, plt.colm) )
     plt.draw(plot)

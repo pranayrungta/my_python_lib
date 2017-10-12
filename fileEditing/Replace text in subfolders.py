@@ -1,12 +1,15 @@
 # This program replaces text in text files
 # inside all folders in current working directory
 # satisfying th file criteria
+criteria = ['.py']
+nonCriteria = ['.pyc']
 
-filecriteria = ['.py']
-nonCriteria = ['Replace', '.pyc']
+base = './../'
+fileStructure = 'lib' # 'raw' 'lib'
+#-----------------------------------------
 
-look_for = 'Pranay.data_manipulation.x_at_y_module'
-replace_with = ""
+look_for = 'criteria'
+replace_with = ''
 print_format = 'idle-python3.5 "$"'
 
 #1. Show filenames
@@ -16,65 +19,34 @@ print_format = 'idle-python3.5 "$"'
 action = 1
 
 
-isAdir=[]
-
-#=====================================================================
-import os
-
-# return [flag, contents]
-def criteria_satisfied(filepath):
-    global isAdir
-    flags = [ (criteria in filepath) for criteria in filecriteria ]
-    flags +=[ (criteria not in filepath) for criteria in nonCriteria]
-    if(not all(flags) ):
-        return [False,'']
-    else:
-        try:
-            f= open(filepath, 'r')
-            contents = f.readlines()
-            f.close()
-        except :
-            isAdir+=[filepath]
-            return [False,'']
-
-        for line in contents:
-            if(look_for in line):
-                return [True, contents]
-        return [False,'']
-
-
-def afterReplacement(contents):
-    for i in range(len(contents)):
-        if(look_for in contents[i]):
-            contents[i] =  contents[i].replace(look_for,replace_with)
-    return ''.join(contents)
 
 
 #----------main program-----------
-fileCollection = []
-for root, directory, files in os.walk('./'):
-    for filename in files:
-        filepath = os.path.join(root,filename)
-        isCriteriaSatisfied, contents = criteria_satisfied(filepath)
-        if(isCriteriaSatisfied):
-            if(action==1):
-                print( print_format.replace('$',filepath) )
-                fileCollection += [filepath]
-            elif(action==2):
-                print('===========================')
-                print(filepath)
-                print('===========================')
-                print( ''.join(contents) )
-                print('---------xxxxxxx-----------\n\n')
-            elif(action==3):
-                print('===========================')
-                print(filepath)
-                print('===========================')
-                print(afterReplacement(contents))
-                print('---------xxxxxxx-----------\n\n')
-            elif(action==4):
-                print('applying change to : ', filepath)
-                f= open(filepath,'w')
-                f.write(afterReplacement(contents))
-                f.close()             
+import os
+import Pranay.files_structure.criteria as fileGen
+files = fileGen.files(criteria, nonCriteria, base, fileStructure)
+
+for filename,root in files:
+    filepath = os.path.join(root,filename)
+    data = open(filepath, 'r').read()
+    if(look_for in data):
+        if(action==1):
+            print( print_format.replace('$',filepath) )
+        elif(action==2):
+            print('===========================')
+            print(filepath)
+            print('===========================')
+            print( data )
+            print('---------xxxxxxx-----------')
+        elif(action==3):
+            print('===========================')
+            print(filepath)
+            print('===========================')
+            print( data.replace(look_for,replace_with) )
+            print('---------xxxxxxx-----------\n\n')
+        elif(action==4):
+            print('applying change to : ', filepath)
+            f = open(filepath,'w')
+            f.write( data.replace(look_for,replace_with) )
+            f.close()
 input('\n\nPress enter to exit...')

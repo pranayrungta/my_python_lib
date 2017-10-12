@@ -1,23 +1,23 @@
-def addline(filename, newfilename):
-    f = open(filename , 'r')
-    fout = open( newfilename, 'w')
-    for line in f:
-        fout.write(line)
-        if (line == '\n'):
-            fout.write('\n')
-    f.close()
-    fout.close()
-        
+# Files should satisfy the following criteria
+criteria = ['.txt']
+nonCriteria = ['$']
+
+replaceLines = {'\n':'\n\n',}
+base='./'
 
 
 
+#----------------------------------------------
+import criteria as ct
+import replace as rp
 
-
-import os
-ls = os.listdir('./')
-files = [i for i in ls if ('.txt' in i and os.path.isfile(i) ) ]
-for filename in files:
-    addline(filename,'xy'+filename)
+fileData = ct.rawFiles(base,criteria,nonCriteria)
+for filename,filepath in fileData:
+    print('-----------%s----------'%filename)
+    #print( open(filename,'r').read() )
+    print('-----------replaced %s----------'%filename)
+    #print( rp.exactReplace(filename,replaceLines) )
+    
 
 
 
