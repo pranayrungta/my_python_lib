@@ -9,7 +9,7 @@ ylim=dict() # dict(ymin=1, ymax=50)
 colorRange = dict() # dict(vmin=0, vmax=1)
 
 vertical_on_x = True # False  True
-figsize = (10,6)
+figsize = (8,4.5)
 output = 'show' # 'show' 'png' 'pdf' 'eps'
 
 
