@@ -32,5 +32,5 @@ else:
         if(legend_loc!='None'):plt.legend( loc=legend_loc )
         plt.tight_layout()
         if(output=='show'): plt.show()
-        else: plt.savefig( '%s.%s'%(outfile,output) )    
+        else: plt.savefig(f'{outfile}.{output}')
         plt.close()

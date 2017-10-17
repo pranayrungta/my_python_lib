@@ -56,7 +56,7 @@ for x,y, label in text_labels:
 
 plt.tight_layout()
 if(output_format=='show'): plt.show()
-else: plt.savefig('%s.%s'%(outfilename,output_format))
+else: plt.savefig(f'{outfilename}.{output_format}')
 
 if(not interactive):plt.close()
 else:
