@@ -16,5 +16,5 @@ else:
     plt.setAxis(xlabel,ylabel, None,None,False,False)
     for outfile,title,infile in valid_file_blocks:        
         plt.output(outfile,title)
-        plt.script.write("splot '%s' using %s\n\n\n"%(infile, plt.colm) )
+        plt.script.write(f"splot '{infile}' using {plt.colm}\n\n\n")
     plt.draw(plot)

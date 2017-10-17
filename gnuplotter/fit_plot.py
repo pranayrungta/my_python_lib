@@ -9,11 +9,11 @@ except NameError: valid_file_blocks=fileGen.parameter_generator(
 import Pranay.gnuplotter.gnuplotter_basic as plt
 def power_law_fit_cmd(filepath, vary):
     tag = vary.split('=')[-1]
-    line1 = "f%s(x) = a%s*x**b%s  \n"%((tag,)*3)
-    line2 = "fit f%s(x) '%s' u %s via a%s, b%s \n"%(tag,filepath,plt.colm,tag,tag)
-    line3 = "title_f%s(a%s,b%s) = "%((tag,)*3)
-    line3 += "sprintf(  'f(x) = %.2f (x^{%.2f}) " #label
-    line3 += " for %s  ', a%s, b%s   ) \n"%(vary, tag, tag)
+    f,a,b = f'f{tag}', f'a{tag}', f'b{tag}'
+    line1 = f"{f}(x) = {a}*x**{b}\n"
+    line2 = f"fit {f}(x) '{filepath}' u {plt.colm} via {a}, {b}\n"
+    line3 = f"title_{f}({a},{b}) = " + r"sprintf( 'f(x) = %.2f (x^{%.2f}) "
+    line3+= f"for {vary}', {a},{b}   ) \n"
     return line1+line2+line3
 
 def fit_files(fileData,fit):
@@ -23,7 +23,8 @@ def fit_files(fileData,fit):
                              for filepath,vary in fileData) + '\n')
 def filenameClause(filepath,vary):
     tag = vary.split('=')[-1]
-    s = ', f%s(x) title title_f%s(a%s,b%s) '%((tag,)*4)
+    f,a,b = f'f{tag}', f'a{tag}', f'b{tag}'
+    s = f', {f}(x) title title_{f}({a},{b}) '
     return plt.filenameClause(filepath,vary)+s
 
 if( len(valid_file_blocks)==0 ):
@@ -37,4 +38,5 @@ else:
         plt.output(outfile,title)
         fit_files(fileData,fit)
         plt.plot(fileData,filenameClause)
+        plt.script.write('\n')
     plt.draw(plot)

@@ -20,7 +20,7 @@ fileStructure = 'lib' # 'lib' 'raw'
 
 out_folder = 'None' # 'None' 'fol_name' 'auto'
 #-----gnuplot parameters-------------
-terminal = 'display_files'  #'show' 'display_files' 'eps' 'jpeg' 'png'
+terminal = 'jpeg'  #'show' 'display_files' 'eps' 'jpeg' 'png'
 set_grid = True  # True   False
 
 xlabel = 'N1/N scaled'
@@ -38,8 +38,7 @@ def colmGen():
     x,y=1,2
     xcrit=0.125; power=0.5
     for n in nRange:
-        colms = '( ($%s/%s-%s)*(%s**%s) ):%s'%(
-                    x,n,xcrit,n,power,y)
+        colms = f'( (${x}/{n}-{xcrit})*({n}**{power}) ):{y}'
         yield colms
 
 plot = False  # True   False

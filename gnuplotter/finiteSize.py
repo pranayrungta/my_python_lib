@@ -8,8 +8,7 @@ except NameError: valid_file_blocks=fileGen.parameter_generator(
 
 import Pranay.gnuplotter.gnuplotter_basic as plt
 def filenameClause(filepath,curve_title,colm):
-    return  '"%s" u %s w %s title "%s"'%(
-        filepath, colm, plot_With, curve_title)
+    return  f'"{filepath}" u {colm} w {plot_With} title "{curve_title}"'
 
 def plotfiles(fileData):
     clauses = [ filenameClause(filepath,curve_title,colm)

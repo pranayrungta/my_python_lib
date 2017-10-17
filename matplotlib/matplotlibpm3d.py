@@ -36,6 +36,6 @@ for filename in files:
     plt.colorbar()
     plt.tight_layout()
     if(output=='show'): plt.show()
-    else: plt.savefig('%s.%s'%(filename[:-4],output))
+    else: plt.savefig(f'{filename[:-4]}.{output}')
     plt.close()
 print('\nDone !')

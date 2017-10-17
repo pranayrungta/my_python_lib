@@ -1,20 +1,20 @@
-all_parameters = [['Smallworld'],#0
-                  ['static',],#1
-                  ['n=100','n=200','n=400', ] , #2
-                  ['k=2'] , #3
+all_parameters = [['static', 'dynamic'],#0
+                  ['c=1'] , #1
+                  ['k=2', 'k=4'] , #2
+                  ['n=100','n=250','n=500', ] , #3
                   ['b=0'] , #4
-                  ['th=0.01'], #5
+                  ['p=0.1','p=0.3','p=0.5','p=0.7',], #5
                   ]
-vary_parameter = 2  # index
-for_all_fixed = 1   # index
-constant_parameter = { 0:0 ,
-                       3:0 ,
+vary_parameter = 3  # index
+for_all_fixed = 0   # index
+constant_parameter = { 1:0 ,
+                       2:0 ,
                        4:0 ,
                        5:0 ,
                        }
 
 base = './../../matplotlib/trigger/sample_data'
-fileStructure = 'raw' # 'lib' 'raw'
+fileStructure = 'lib' # 'lib' 'raw'
 
 out_folder='None' # 'auto' 'None' 'FOLDER'
 #-----gnuplot parameters-------------
