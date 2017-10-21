@@ -12,8 +12,7 @@ def filenameClause(filepath,curve_title,colm):
 
 def plotfiles(fileData):
     clauses = [ filenameClause(filepath,curve_title,colm)
-                    for (filepath,curve_title),colm
-                            in zip( fileData,colmGen() ) ]
+                for (filepath,curve_title),colm in zip( fileData,colmGen() ) ]
     clauses[0] = 'plot '+ clauses[0]
     clauseSep = ', \t \\\n     '
     plt.script.write( clauseSep.join(clauses)+'\n\n' )

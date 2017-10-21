@@ -20,7 +20,7 @@ out_folder='None' # 'auto' 'None' 'FOLDER'
 #-----gnuplot parameters-------------
 fit = 'power' # 'power' 'linear'
 
-terminal = 'jpeg'  # 'eps' 'jpeg' 'png' 'display_files'
+terminal = 'display_files'  # 'eps' 'jpeg' 'png' 'display_files'
 
 xlabel = 'p'
 xRangeflag = False  # True   False

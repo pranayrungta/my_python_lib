@@ -67,34 +67,27 @@ def file_path_method(fileStructure):
 #                        (filepath2, vary2), ]
 #                    ]
 def parameter_generator(all_parameters,vary_parameter,for_all_fixed,
-                        constant_parameter, base, fileStructure,
-                        out_folder='./'): # for backward compatibility
+        constant_parameter, base, fileStructure,out_folder='./'):
     file_path = file_path_method(fileStructure)
     out_folder = outfolder(out_folder,all_parameters,vary_parameter)
     no_of_files = len(all_parameters[for_all_fixed])
     plots_per_file = len(all_parameters[vary_parameter])
-
     parameter=[]
-    # fileNo = output file no.
-    for fileNo in range(no_of_files):
-        paraDic = constant_parameter.copy()
-
-        paraDic[for_all_fixed]= fileNo
+    for fileNo in range(no_of_files): # fileNo = output file no.
+        paraDic= {for_all_fixed:fileNo, **constant_parameter}
         title,outfile = title_outfile(paraDic,all_parameters,out_folder)
-
         fileData = []
         for curveNo in range(plots_per_file):
             paraDic[vary_parameter] = curveNo
-            filename,curve=filename_curve(all_parameters, paraDic, vary_parameter)
+            filename,curve=filename_curve(all_parameters,paraDic,vary_parameter)
             filepath = file_path(filename,base)
             fileData += [ (filepath, curve) ]
         fileData = check_validity(fileData)
-        if(len(fileData)>0):
-            parameter += [ [outfile,title, fileData] ]
+        if(len(fileData)>0):parameter.append([outfile,title,fileData])
     return parameter
 
 def display(valid_file_blocks):
     print('valid_file_blocks=\\')
     import pprint
-    pp = pprint.PrettyPrinter(indent=4,width=120)
+    pp = pprint.PrettyPrinter(indent=4,width=130)
     pp.pprint(valid_file_blocks)

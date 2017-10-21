@@ -12,8 +12,8 @@ def power_law_fit_cmd(filepath, vary):
     f,a,b = f'f{tag}', f'a{tag}', f'b{tag}'
     line1 = f"{f}(x) = {a}*x**{b}\n"
     line2 = f"fit {f}(x) '{filepath}' u {plt.colm} via {a}, {b}\n"
-    line3 = f"title_{f}({a},{b}) = " + r"sprintf( 'f(x) = %.2f (x^{%.2f}) "
-    line3+= f"for {vary}', {a},{b}   ) \n"
+    line3 = ( f"title_{f}({a},{b}) = sprintf( 'f(x) = "+
+              r"%.2f (x^{%.2f}) for " + f"{vary}',{a},{b} ) \n" )
     return line1+line2+line3
 
 def fit_files(fileData,fit):
