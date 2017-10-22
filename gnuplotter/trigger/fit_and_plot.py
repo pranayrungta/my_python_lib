@@ -18,9 +18,9 @@ fileStructure = 'lib' # 'lib' 'raw'
 
 out_folder='None' # 'auto' 'None' 'FOLDER'
 #-----gnuplot parameters-------------
-fit = 'power' # 'power' 'linear'
+fit = 'linear' # 'power' 'linear'
 
-terminal = 'display_files'  # 'eps' 'jpeg' 'png' 'display_files'
+terminal = 'jpeg'  # 'eps' 'jpeg' 'png' 'display_files'
 
 xlabel = 'p'
 xRangeflag = False  # True   False

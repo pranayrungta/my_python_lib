@@ -13,14 +13,25 @@ def power_law_fit_cmd(filepath, vary):
     line1 = f"{f}(x) = {a}*x**{b}\n"
     line2 = f"fit {f}(x) '{filepath}' u {plt.colm} via {a}, {b}\n"
     line3 = ( f"title_{f}({a},{b}) = sprintf( 'f(x) = "+
-              r"%.2f (x^{%.2f}) for " + f"{vary}',{a},{b} ) \n" )
+              r"%.2f (x^{%.2f}) for " + f"{vary}',{a},{b} ) \n\n" )
+    return line1+line2+line3
+
+def linear_fit_cmd(filepath, vary):
+    tag = vary.split('=')[-1]
+    f,a,b = f'f{tag}', f'a{tag}', f'b{tag}'
+    line1 = f"{f}(x) = {a}*x + {b}\n"
+    line2 = f"fit {f}(x) '{filepath}' u {plt.colm} via {a}, {b}\n"
+    line3 = ( f"title_{f}({a},{b}) = sprintf( 'f(x) = "+
+              r"%.2f x + %.2f for " + f"{vary}',{a},{b} ) \n\n" )
     return line1+line2+line3
 
 def fit_files(fileData,fit):
     if(fit=='power'): fit_cmd=power_law_fit_cmd
-    else: raise ValueError('program under construction!!!')
-    plt.script.write( '\n'+ '\n'.join(fit_cmd(filepath,vary)
-                             for filepath,vary in fileData) + '\n')
+    elif(fit=='linear'): fit_cmd=linear_fit_cmd
+    else: raise ValueError(' "fit" not found')
+    plt.script.write('\n')
+    plt.script.writelines(fit_cmd(filepath,vary) for filepath,vary in fileData)
+
 def filenameClause(filepath,vary):
     tag = vary.split('=')[-1]
     f,a,b = f'f{tag}', f'a{tag}', f'b{tag}'
