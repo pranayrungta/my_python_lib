@@ -13,7 +13,7 @@ fileStructure = 'raw' # 'lib' 'raw'
     
 out_folder = 'None' # 'None' 'fol_name' 'auto'
 #-----gnuplot parameters-------------
-terminal = 'display_files'  # 'show' 'display_files' 'eps' 'jpeg' 'png'
+terminal = 'jpeg'  # 'show' 'display_files' 'eps' 'jpeg' 'png'
 set_grid = True  # True   False
 
 xlabel = 'fnode'
