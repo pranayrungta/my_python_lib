@@ -14,7 +14,7 @@ constant_parameter = { 0:0 ,
                        5:0 ,
                        }
 
-base = './sample_data/'
+base = './../sample_data/'
 fileStructure = 'lib' # 'lib' 'raw'
 
 out_folder = 'None' # 'None' 'fol_name' 'auto'

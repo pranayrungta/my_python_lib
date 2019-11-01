@@ -8,12 +8,12 @@ for_all_fixed = 1   # index
 constant_parameter = { 0:0 ,
                        }
 
-base = './../../gnuplotter/trigger/sample_data/'
+base = './../sample_data/'
 fileStructure = 'raw' # 'lib' 'raw'
     
 out_folder = 'None' # 'None' 'fol_name' 'auto'
 #-----gnuplot parameters-------------
-terminal = 'jpeg'  # 'show' 'display_files' 'eps' 'jpeg' 'png'
+terminal = 'display_files'  # 'show' 'display_files' 'eps' 'jpeg' 'png'
 set_grid = True  # True   False
 
 xlabel = 'fnode'
@@ -27,7 +27,7 @@ yRange = (-0.05,1.05)
 plot_With = 'l'   # 'lp'  'p' 'l'  'errorbars'
 using_colms = (1,2)
 
-plot = False  # True   False
+plot = True  # True   False
 #------------------------------------
 
 

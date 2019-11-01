@@ -1,3 +1,5 @@
 /.project
 *.pyc
 Pranay.egg-info/*
+*.jpg
+*.png
