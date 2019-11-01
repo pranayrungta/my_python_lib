@@ -8,7 +8,7 @@ for_all_fixed = 1   # index
 constant_parameter = { 0:0 ,
                        }
 
-base = './../../gnuplotter/trigger/sample_data/'
+base = './../sample_data/'
 fileStructure = 'raw' # 'lib' 'raw'
 
 out_folder = 'None' # 'None' 'fol_name' 'auto'
@@ -18,8 +18,8 @@ log = 'None' #'None' 'x' 'y' 'xy'
 xlabel = ( r'fnode', {'fontsize':20} )
 ylabel = ( 'Mean BS', {'fontsize':20} ) #{'fontsize':20}
 
-xlim={'xmin':0.1, 'xmax':1}#{'xmin':-0.1, 'xmax':1}
-ylim={'ymin':-0.1, 'ymax':100} #{'ymin':-0.1, 'ymax':1}
+xlim={'left':0.1, 'right':1}#{'xmin':-0.1, 'xmax':1}
+ylim={'bottom':-0.1, 'top':100} #{'ymin':-0.1, 'ymax':1}
 
 def using(colm):
     if(colm.ndim==1): #contains single line

@@ -1,5 +1,5 @@
-all_parameters = [['dynamic', 'static'],#0
-                  ['c=1'],#1
+all_parameters = [[ 'dynamic', 'static'],#0
+                  [ 'c=1'],#1
                   [ 'k=2','k=4' ] , #2
                   [ 'n=100','n=250','n=500' ] , #3
                   [ 'b=-0.1' ] , #4
