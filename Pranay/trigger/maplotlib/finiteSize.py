@@ -1,9 +1,9 @@
 all_parameters = [['dynamic', 'static'],#0
                   ['c=1'],#1
-                  [ 'k=2','k=4' ] , #2
-                  [ 'n=100','n=250','n=500' ] , #3
-                  [ 'b=-0.1' ] , #4
-                  [ 'p=0.9' ] , #5
+                  ['k=2','k=4' ] , #2
+                  ['n=100','n=250','n=500' ] , #3
+                  ['b=-0.1' ] , #4
+                  ['p=0.9' ] , #5
                   ]
 
 
@@ -15,17 +15,17 @@ constant_parameter = { 0:0 ,
                        5:0 ,
                        }
 
-base = './sample_data/'
+base = './../sample_data/'
 fileStructure = 'lib' # 'lib' 'raw'
 
 out_folder = 'None' # 'None' 'fol_name' 'auto'
 #---------plot parameters-------------
 log = 'None' #'None' 'x' 'y' 'xy'
 
-xlabel = ( 'N1/N scaled', {'fontsize':35} )
-ylabel = ( '<x>', {'fontsize':20} ) #{'fontsize':20}
+xlabel = ( r'$N_1/N$ $scaled$', {'fontsize':23} )
+ylabel = ( r'$\langle x \rangle$', {'fontsize':20} ) #{'fontsize':20}
 
-xlim={'xmin':-3, 'xmax':3} #{'xmin':-0.1, 'xmax':1}
+xlim={'left':-3, 'right':3} #{'xmin':-0.1, 'xmax':1}
 ylim={} #{'ymin':-0.1, 'ymax':1}
 
 def using_colms():
@@ -41,7 +41,7 @@ def using_colms():
 set_grid = False  # True   False
 plot_title = 'auto' # 'auto' 'None' 'TITLE'
 legend_loc = 'best' # 'None' 'best', 'right'
-output = 'show'  # 'display_files' 'show' 'eps' 'png'
+output = 'display_files'  # 'display_files' 'show' 'eps' 'png'
 #------------------------------------
 
 
