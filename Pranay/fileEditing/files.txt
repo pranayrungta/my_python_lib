@@ -1,0 +1,148 @@
+﻿
+    Lecture 1
+
+Watch Online:	// Watch Now <https://see.stanford.edu/Course/CS229/47>
+Download:
+Right Click, and Save As
+	// Download
+<http://html5.stanford.edu/videos/courses/see/CS229/CS229-lecture01.mp4>
+Duration:	1 hr 9 min
+Watch Online:	*Topics:* The Motivation & Applications of Machine
+Learning, The Logistics of the Class, The Definition of Machine
+Learning, The Overview of Supervised Learning, The Overview of Learning
+Theory, The Overview of Unsupervised Learning, The Overview of
+Reinforcement Learning
+Watch Online: 	Download:
+Right Click, and Save As
+	Duration:
+// Watch Now <https://see.stanford.edu/Course/CS229/47> 	// Download
+<http://html5.stanford.edu/videos/courses/see/CS229/CS229-lecture01.mp4> 	1
+hr 9 min
+*Topics:* The Motivation & Applications of Machine Learning, The
+Logistics of the Class, The Definition of Machine Learning, The Overview
+of Supervised Learning, The Overview of Learning Theory, The Overview of
+Unsupervised Learning, The Overview of Reinforcement Learning
+
+
+      Transcripts
+
+  * HTML
+    <https://see.stanford.edu/materials/aimlcs229/transcripts/MachineLearning-Lecture01.html>
+  * PDF
+    <https://see.stanford.edu/materials/aimlcs229/transcripts/MachineLearning-Lecture01.pdf>
+
+
+    Lecture 2
+
+Watch Online:	// Watch Now <https://see.stanford.edu/Course/CS229/54>
+Download:
+Right Click, and Save As
+	// Download
+<http://html5.stanford.edu/videos/courses/see/CS229/CS229-lecture02.mp4>
+Duration:	1 hr 16 min
+Watch Online:	*Topics:* An Application of Supervised Learning -
+Autonomous Deriving, ALVINN, Linear Regression, Gradient Descent, Batch
+Gradient Descent, Stochastic Gradient Descent (Incremental Descent),
+Matrix Derivative Notation for Deriving Normal Equations, Derivation of
+Normal Equations
+Watch Online: 	Download:
+Right Click, and Save As
+	Duration:
+// Watch Now <https://see.stanford.edu/Course/CS229/54> 	// Download
+<http://html5.stanford.edu/videos/courses/see/CS229/CS229-lecture02.mp4> 	1
+hr 16 min
+*Topics:* An Application of Supervised Learning - Autonomous Deriving,
+ALVINN, Linear Regression, Gradient Descent, Batch Gradient Descent,
+Stochastic Gradient Descent (Incremental Descent), Matrix Derivative
+Notation for Deriving Normal Equations, Derivation of Normal Equations
+
+
+      Transcripts
+
+  * HTML
+    <https://see.stanford.edu/materials/aimlcs229/transcripts/MachineLearning-Lecture02.html>
+  * PDF
+    <https://see.stanford.edu/materials/aimlcs229/transcripts/MachineLearning-Lecture02.pdf>
+
+
+    Lecture 3
+
+Watch Online:	// Watch Now <https://see.stanford.edu/Course/CS229/42>
+Download:
+Right Click, and Save As
+	// Download
+<http://html5.stanford.edu/videos/courses/see/CS229/CS229-lecture03.mp4>
+Duration:	1 hr 13 min
+Watch Online:	*Topics:* The Concept of Underfitting and Overfitting, The
+Concept of Parametric Algorithms and Non-parametric Algorithms, Locally
+Weighted Regression, The Probabilistic Interpretation of Linear
+Regression, The motivation of Logistic Regression, Logistic Regression,
+Perceptron
+Watch Online: 	Download:
+Right Click, and Save As
+	Duration:
+// Watch Now <https://see.stanford.edu/Course/CS229/42> 	// Download
+<http://html5.stanford.edu/videos/courses/see/CS229/CS229-lecture03.mp4> 	1
+hr 13 min
+*Topics:* The Concept of Underfitting and Overfitting, The Concept of
+Parametric Algorithms and Non-parametric Algorithms, Locally Weighted
+Regression, The Probabilistic Interpretation of Linear Regression, The
+motivation of Logistic Regression, Logistic Regression, Perceptron
+
+
+      Transcripts
+
+  * HTML
+    <https://see.stanford.edu/materials/aimlcs229/transcripts/MachineLearning-Lecture03.html>
+  * PDF
+    <https://see.stanford.edu/materials/aimlcs229/transcripts/MachineLearning-Lecture03.pdf>
+
+
+    Lecture 4
+
+Watch Online:	// Watch Now <https://see.stanford.edu/Course/CS229/49>
+Download:
+Right Click, and Save As
+	// Download
+<http://html5.stanford.edu/videos/courses/see/CS229/CS229-lecture04.mp4>
+Duration:	1 hr 13 min
+Watch Online:	*Topics:* Newton's Method, Exponential Family, Bernoulli
+Example, Gaussian Example, General Linear Models (GLMs), Multinomial
+Example, Softmax Regression
+Watch Online: 	Download:
+Right Click, and Save As
+	Duration:
+// Watch Now <https://see.stanford.edu/Course/CS229/49> 	// Download
+<http://html5.stanford.edu/videos/courses/see/CS229/CS229-lecture04.mp4> 	1
+hr 13 min
+*Topics:* Newton's Method, Exponential Family, Bernoulli Example,
+Gaussian Example, General Linear Models (GLMs), Multinomial Example,
+Softmax Regression
+
+
+      Transcripts
+
+  * HTML
+    <https://see.stanford.edu/materials/aimlcs229/transcripts/MachineLearning-Lecture04.html>
+  * PDF
+    <https://see.stanford.edu/materials/aimlcs229/transcripts/MachineLearning-Lecture04.pdf>
+
+
+    Lecture 5
+
+Watch Online:	// Watch Now <https://see.stanford.edu/Course/CS229/50>
+Download:
+Right Click, and Save As
+	// Download
+<http://html5.stanford.edu/videos/courses/see/CS229/CS229-lecture05.mp4>
+Duration:	1 hr 16 min
+Watch Online:	*Topics:* Discriminative Algorithms, Generative
+Algorithms, Gaussian Discriminant Analysis (GDA), GDA and Logistic
+Regression, Naive Bayes, Laplace Smoothing
+Watch Online: 	Download:
+Right Click, and Save As
+	Duration:
+// Watch Now <https://see.stanford.edu/Course/CS229/50> 	// Download
+<http://html5.stanford.edu/videos/courses/see/CS229/CS229-lecture05.mp4> 	1
+hr 16 min
+
