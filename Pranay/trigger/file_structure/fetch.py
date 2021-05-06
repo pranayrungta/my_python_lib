@@ -15,6 +15,5 @@ fetch_parameters = [
 
 
 #--------------------------------------
-import sys
-sys.dont_write_bytecode = True
-from Pranay.files_structure.fetch_data import *
+from Pranay.files_structure.fetch_data import main
+main(fetch_parameters)

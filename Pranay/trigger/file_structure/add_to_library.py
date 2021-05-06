@@ -4,7 +4,5 @@ nonCriteria = ['$']
 
 
 
-#--------------------------------------
-import sys
-sys.dont_write_bytecode = True
-from Pranay.files_structure.add_data_to_library import *
+from Pranay.files_structure.add_data_to_library import main
+main(fileCriteria, nonCriteria)
